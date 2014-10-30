@@ -3,7 +3,7 @@
  * runs game loop
  */
 
-package com.base;
+package com.base.core;
 
 import com.base.game.*;
 
