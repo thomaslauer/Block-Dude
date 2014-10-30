@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	//TODO: make an abstract class 
+	
 	public void init()
 	{
 		
