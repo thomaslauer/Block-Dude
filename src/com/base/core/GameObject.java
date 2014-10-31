@@ -11,10 +11,22 @@ import java.util.ArrayList;
 public class GameObject {
 	private boolean isEnabled = true;
 	
+	public Transform transform;
+	
 	public String name;
 	
-	public ArrayList<GameObject> children = new ArrayList<GameObject>();
+	public ArrayList<GameObject> children;
 	public ArrayList<GameComponent> components = new ArrayList<GameComponent>();
+	
+	public Engine engine;
+	
+	public GameObject()
+	{
+		transform = new Transform(0, 0, 0);
+		children = new ArrayList<GameObject>();
+		components = new ArrayList<GameComponent>();
+		engine = null;
+	}
 	
 	public final void input()
 	{
@@ -28,6 +40,17 @@ public class GameObject {
 			if(g.isEnabled)
 				g.input();
 		}
+	}
+	
+	public GameObject setEnabled(boolean enabled)
+	{
+		isEnabled = enabled;
+		return this;
+	}
+	
+	public boolean getEnabled()
+	{
+		return isEnabled;
 	}
 	
 	public final void update()
@@ -58,6 +81,12 @@ public class GameObject {
 		}
 	}
 	
+	public void addObject(GameObject o)
+	{
+		o.setEngine(engine);
+		children.add(o);
+	}
+	
 	public GameObject getChildObject(String name)
 	{
 		for(GameObject g : children)
@@ -70,7 +99,7 @@ public class GameObject {
 		return null;
 	}
 	
-	public GameComponent getComponent(String name)
+	public GameComponent getComponentNamed(String name)
 	{
 		for(GameComponent c : components)
 		{
@@ -82,14 +111,31 @@ public class GameObject {
 		return null;
 	}
 	
-	public GameObject setEnabled(boolean enabled)
+	public GameComponent getComponentType(String type)
 	{
-		isEnabled = enabled;
-		return this;
+		try {
+			Class<?> componentClass = Class.forName(type);
+			
+			for(GameComponent c : components)
+			{
+				if(componentClass.isInstance(c))
+				{
+					return c;
+				}
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public boolean getEnabled()
+	public void setEngine(Engine e)
 	{
-		return isEnabled;
+		engine = e;
+		for(GameObject g : children)
+		{
+			g.setEngine(e);
+		}
 	}
 }

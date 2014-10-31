@@ -9,32 +9,25 @@ package com.base.core;
 
 public class GameComponent {
 	
+	private GameObject parentObject;
 	private boolean isEnabled = true;
 	
 	public String name;
 	
+	public Transform parentTransform;
+	
 	public GameComponent(GameObject parent, String name)
 	{
 		parentObject = parent;
+		parentTransform = parent.transform;
 		this.name = name;
 	}
 	
-	private GameObject parentObject;
+	public void input(){}
 	
-	public void input()
-	{
-		
-	}
+	public void update(){}
 	
-	public void update()
-	{
-		
-	}
-	
-	public void render()
-	{
-		
-	}
+	public void render(){}
 
 	public boolean isEnabled() {
 		return isEnabled;

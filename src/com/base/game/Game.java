@@ -5,34 +5,12 @@
 
 package com.base.game;
 
-import java.util.ArrayList;
+import com.base.core.AbstractGame;
+import com.base.core.GameObject;
 
-public class Game {
-	
-	//TODO: make an abstract class 
-	
+public class Game extends AbstractGame{
 	public void init()
 	{
-		
-	}
-	
-	public void input()
-	{
-		
-	}
-	
-	public void update()
-	{
-		
-	}
-	
-	public void render()
-	{
-		
-	}
-	
-	public void cleanup()
-	{
-		
+		rootObject.addObject(new GameObject());
 	}
 }
