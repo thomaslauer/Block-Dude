@@ -9,10 +9,13 @@ package com.base.core;
 import java.util.ArrayList;
 
 public class GameObject {
+	// if any computations should be done on this object
 	private boolean isEnabled = true;
 	
+	// Transform to hold position
 	public Transform transform;
 	
+	// name of the object
 	public String name;
 	
 	public ArrayList<GameObject> children;
@@ -20,12 +23,34 @@ public class GameObject {
 	
 	public Engine engine;
 	
-	public GameObject()
+	public GameObject(float x, float y, float z, String name)
 	{
-		transform = new Transform(0, 0, 0);
+		transform = new Transform(x, y, z);
 		children = new ArrayList<GameObject>();
 		components = new ArrayList<GameComponent>();
 		engine = null;
+		this.name = name;
+	}
+	
+	public GameObject(float x, float y, float z)
+	{
+		this(x, y, z, "");
+	}
+	
+	public GameObject(String name)
+	{
+		this(0, 0, 0, name);
+	}
+	
+	public GameObject()
+	{
+		this(0, 0, 0, "");
+	}
+	
+	
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 	
 	public final void input()
