@@ -21,7 +21,7 @@ public class GameObject {
 	public String name;
 	
 	public ArrayList<GameObject> children;
-	public ArrayList<GameComponent> components = new ArrayList<GameComponent>();
+	public ArrayList<GameComponent> components;
 	
 	public Engine engine;
 	
@@ -64,20 +64,7 @@ public class GameObject {
 		return this;
 	}
 	
-	public final void input()
-	{
-		for(GameComponent g : components)
-		{
-			if(g.isEnabled())
-				g.input();
-		}
-		for(GameObject g : children)
-		{
-			if(g.isEnabled)
-				g.input();
-		}
-	}
-	
+
 	public GameObject setEnabled(boolean enabled)
 	{
 		isEnabled = enabled;
@@ -89,31 +76,58 @@ public class GameObject {
 		return isEnabled;
 	}
 	
-	public final void update()
+	public final void input()
 	{
-		for(GameComponent g : components)
+		for(GameComponent c : components)
 		{
-			if(g.isEnabled())
-				g.update();
+			if(c.isEnabled())
+			{
+				c.input();
+			}
 		}
 		for(GameObject g : children)
 		{
-			if(g.isEnabled)
+			if(g.getEnabled())
+			{
+				g.input();
+			}
+		}
+	}
+	
+	public final void update()
+	{
+		for(GameComponent c : components)
+		{
+			if(c.isEnabled())
+			{
+				c.update();
+				
+			}
+		}
+		for(GameObject g : children)
+		{
+			if(g.getEnabled())
+			{
 				g.update();
+			}
 		}
 	}
 	
 	public final void render()
 	{
-		for(GameComponent g : components)
+		for(GameComponent c : components)
 		{
-			if(g.isEnabled())
-				g.render();
+			if(c.isEnabled())
+			{
+				c.render();
+			}
 		}
 		for(GameObject g : children)
 		{
-			if(g.isEnabled)
+			if(g.getEnabled())
+			{
 				g.render();
+			}
 		}
 	}
 	

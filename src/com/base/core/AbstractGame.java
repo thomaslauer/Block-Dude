@@ -18,15 +18,15 @@ public abstract class AbstractGame {
 	
 	public void init(){}
 	
-	public void input()
+	public final void input()
 	{
 		rootObject.input();
 	}
-	public void update()
+	public final void update()
 	{
 		rootObject.update();
 	}
-	public void render()
+	public final void render()
 	{
 		rootObject.render();
 	}

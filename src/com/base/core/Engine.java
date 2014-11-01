@@ -45,7 +45,7 @@ public class Engine {
 			render();
 			
 			Window.capFps(60);
-			
+			Window.clearScreen();
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}

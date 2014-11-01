@@ -25,15 +25,21 @@ public class Transform {
 		return new Transform(t.x + x, t.y + y, t.z + z);
 	}
 	
-	public Transform getWorldSpaceTranform()
+	public Transform setParent(Transform t)
+	{
+		parent = t;
+		return this;
+	}
+	
+	public Transform getWorldSpaceTransform()
 	{
 		if(parent != null)
 		{
-			return new Transform(x + parent.getWorldSpaceTranform().x, y + parent.getWorldSpaceTranform().y, z + parent.getWorldSpaceTranform().z);
+			return new Transform(x + parent.getWorldSpaceTransform().x, y + parent.getWorldSpaceTransform().y, z + parent.getWorldSpaceTransform().z);
 		}
 		else
 		{
-			return this;
+			return new Transform(x, y, z).setParent(this);
 		}
 	}
 }
