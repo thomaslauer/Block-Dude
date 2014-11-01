@@ -8,6 +8,8 @@ package com.base.core;
 
 import java.util.ArrayList;
 
+import com.base.core.components.GameComponent;
+
 public class GameObject {
 	// if any computations should be done on this object
 	private boolean isEnabled = true;
@@ -34,7 +36,7 @@ public class GameObject {
 	
 	public GameObject(float x, float y, float z)
 	{
-		this(x, y, z, "");
+		this(x, y, z, null);
 	}
 	
 	public GameObject(String name)
@@ -44,13 +46,22 @@ public class GameObject {
 	
 	public GameObject()
 	{
-		this(0, 0, 0, "");
+		this(0, 0, 0, null);
 	}
 	
 	
-	public void setName(String name)
+	public GameObject setName(String name)
 	{
 		this.name = name;
+		return this;
+	}
+	
+	public GameObject setPosition(float x, float y, float z)
+	{
+		transform.x = x;
+		transform.y = y;
+		transform.z = z;
+		return this;
 	}
 	
 	public final void input()
@@ -106,10 +117,18 @@ public class GameObject {
 		}
 	}
 	
-	public void addObject(GameObject o)
+	public GameObject addObject(GameObject o)
 	{
 		o.setEngine(engine);
 		children.add(o);
+		return this;
+	}
+	
+	public GameObject addComponent(GameComponent c)
+	{
+		c.setParentObject(this);
+		components.add(c);
+		return this;
 	}
 	
 	public GameObject getChildObject(String name)

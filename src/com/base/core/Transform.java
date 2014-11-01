@@ -5,6 +5,8 @@ package com.base.core;
  *
  */
 public class Transform {
+	//TODO: add a way to account for parent transforms (will have to be in other classes)
+	
 	public float x;
 	public float y;
 	public float z;

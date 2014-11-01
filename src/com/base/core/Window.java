@@ -70,4 +70,14 @@ public class Window {
 	{
 		return Display.isCloseRequested();
 	}
+	
+	public static void capFps(int fps)
+	{
+		Display.sync(fps);
+	}
+	
+	public static void clearScreen()
+	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
 }

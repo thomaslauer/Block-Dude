@@ -43,6 +43,8 @@ public class Engine {
 			update();
 			render();
 			
+			Window.capFps(60);
+			
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}

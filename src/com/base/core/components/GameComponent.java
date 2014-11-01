@@ -5,7 +5,10 @@
  * rendering, physics, input, and more
  */
 
-package com.base.core;
+package com.base.core.components;
+
+import com.base.core.GameObject;
+import com.base.core.Transform;
 
 public class GameComponent {
 	
@@ -16,11 +19,13 @@ public class GameComponent {
 	
 	public Transform parentTransform;
 	
-	public GameComponent(GameObject parent, String name)
+	public GameComponent(String name)
 	{
-		parentObject = parent;
-		parentTransform = parent.transform;
 		this.name = name;
+	}
+	
+	public GameComponent()
+	{
 	}
 	
 	public void input(){}
@@ -43,5 +48,6 @@ public class GameComponent {
 
 	public void setParentObject(GameObject parentObject) {
 		this.parentObject = parentObject;
+		parentTransform = parentObject.transform;
 	}
 }
