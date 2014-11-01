@@ -18,6 +18,7 @@ public class Engine {
 	public Engine(Game game)
 	{
 		this.game = game;
+		game.setGameEngine(this);
 	}
 
 	public void start()

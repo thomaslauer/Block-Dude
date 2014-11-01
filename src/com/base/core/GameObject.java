@@ -120,6 +120,7 @@ public class GameObject {
 	public GameObject addObject(GameObject o)
 	{
 		o.setEngine(engine);
+		o.transform.parent = transform;
 		children.add(o);
 		return this;
 	}

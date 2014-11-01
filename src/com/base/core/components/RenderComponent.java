@@ -20,10 +20,10 @@ public class RenderComponent extends GameComponent{
 		glColor3f(r, g, b);
 		glBegin(GL_QUADS);
 		{
-			glVertex2f(parentTransform.x, parentTransform.y);
-			glVertex2f(parentTransform.x + sx, parentTransform.y);
-			glVertex2f(parentTransform.x + sx, parentTransform.y + sy);
-			glVertex2f(parentTransform.x, parentTransform.y + sy);
+			glVertex2f(parentTransform.getWorldSpaceTranform().x, parentTransform.getWorldSpaceTranform().y);
+			glVertex2f(parentTransform.getWorldSpaceTranform().x + sx, parentTransform.getWorldSpaceTranform().y);
+			glVertex2f(parentTransform.getWorldSpaceTranform().x + sx, parentTransform.getWorldSpaceTranform().y + sy);
+			glVertex2f(parentTransform.getWorldSpaceTranform().x, parentTransform.getWorldSpaceTranform().y + sy);
 		}
 		glEnd();
 	}

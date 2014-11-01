@@ -5,7 +5,8 @@ import com.base.core.Engine;
 public class Main {
 	public static void main(String args[])
 	{
-		Engine mainEngine = new Engine(new Game());
+		Game game = new Game();
+		Engine mainEngine = new Engine(game);
 		mainEngine.start();
 	}
 }

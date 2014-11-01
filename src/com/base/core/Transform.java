@@ -7,6 +7,8 @@ package com.base.core;
 public class Transform {
 	//TODO: add a way to account for parent transforms (will have to be in other classes)
 	
+	public Transform parent;
+	
 	public float x;
 	public float y;
 	public float z;
@@ -21,5 +23,17 @@ public class Transform {
 	public Transform applyTransform(Transform t)
 	{
 		return new Transform(t.x + x, t.y + y, t.z + z);
+	}
+	
+	public Transform getWorldSpaceTranform()
+	{
+		if(parent != null)
+		{
+			return new Transform(x + parent.getWorldSpaceTranform().x, y + parent.getWorldSpaceTranform().y, z + parent.getWorldSpaceTranform().z);
+		}
+		else
+		{
+			return this;
+		}
 	}
 }
