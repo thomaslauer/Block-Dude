@@ -19,13 +19,6 @@ public class Engine {
 	{
 		this.game = game;
 	}
-	
-//	public static void main(String args[])
-//	{
-//		Engine main = new Engine(new Game());
-//		main.init();
-//		main.gameLoop();
-//	}
 
 	public void start()
 	{
@@ -36,6 +29,7 @@ public class Engine {
 	// initializes the game and other needed items
 	private void init()
 	{
+		Window.createDisplay(800, 600);
 		game.init();
 	}
 	
@@ -48,6 +42,9 @@ public class Engine {
 			input();
 			update();
 			render();
+			
+			if(Window.isCloseRequested())
+				isRunning = false;
 		}
 	}
 	// polls the input
@@ -66,5 +63,6 @@ public class Engine {
 	private void render()
 	{
 		game.render();
+		Window.update();
 	}
 }
