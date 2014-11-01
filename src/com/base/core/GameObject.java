@@ -18,14 +18,11 @@ public class GameObject {
 	// name of the object
 	public String name;
 	
-	// ArrayLists of the children objects and the components of this object
 	public ArrayList<GameObject> children;
-	public ArrayList<GameComponent> components;
+	public ArrayList<GameComponent> components = new ArrayList<GameComponent>();
 	
-	// a reference to the engine
 	public Engine engine;
 	
-	// full argument constructor, takes all the arguments needed
 	public GameObject(float x, float y, float z, String name)
 	{
 		transform = new Transform(x, y, z);
@@ -35,19 +32,16 @@ public class GameObject {
 		this.name = name;
 	}
 	
-	// position only constructor
 	public GameObject(float x, float y, float z)
 	{
 		this(x, y, z, "");
 	}
 	
-	// name only constructor
 	public GameObject(String name)
 	{
 		this(0, 0, 0, name);
 	}
 	
-	// no argument constructor
 	public GameObject()
 	{
 		this(0, 0, 0, "");
