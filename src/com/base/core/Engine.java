@@ -19,14 +19,8 @@ public class Engine {
 	{
 		this.game = game;
 	}
-	
-//	public static void main(String args[])
-//	{
-//		Engine main = new Engine(new Game());
-//		main.init();
-//		main.gameLoop();
-//	}
 
+	// method to start the whole engine
 	public void start()
 	{
 		init();
