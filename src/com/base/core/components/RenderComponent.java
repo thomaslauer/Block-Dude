@@ -13,7 +13,7 @@ public class RenderComponent extends GameComponent{
 		this.g = g;
 		this.b = b;
 	}
-	
+
 	public void render()
 	{
 		glColor3f(r, g, b);

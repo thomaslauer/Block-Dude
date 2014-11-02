@@ -57,6 +57,15 @@ public class Window {
 		glLoadIdentity();
 		glOrtho(0, currentDisplayMode.getWidth(), currentDisplayMode.getHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
+		glEnable(GL_TEXTURE_2D);
+		glEnable(GL_BLEND);
+    	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    	setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	}
+	
+	public static void setClearColor(float r, float b, float g, float a)
+	{
+		glClearColor(r, g, b, a);
 	}
 	
 	// updates the display and pushes all drawing to screen
