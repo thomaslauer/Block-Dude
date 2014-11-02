@@ -12,7 +12,7 @@ import com.base.core.Transform;
 
 public class GameComponent {
 	
-	private GameObject parentObject;
+	protected GameObject parentObject;
 	private boolean isEnabled = true;
 	
 	public String name;
@@ -24,9 +24,9 @@ public class GameComponent {
 		this.name = name;
 	}
 	
-	public GameComponent()
-	{
-	}
+	public GameComponent(){}
+	
+	public void init(){}
 	
 	public void input(){}
 	

@@ -1,3 +1,7 @@
+/**
+ * Main class which just kicks the whole thing off
+ */
+
 package com.base.game;
 
 import com.base.core.Engine;

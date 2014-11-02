@@ -7,7 +7,6 @@ public class RenderComponent extends GameComponent{
 	public float sx, sy, r, g, b;
 	
 	public RenderComponent(float sx, float sy, float r, float g, float b) {
-		super();
 		this.sx = sx;
 		this.sy = sy;
 		this.r = r;

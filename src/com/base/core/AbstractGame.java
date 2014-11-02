@@ -18,6 +18,10 @@ public abstract class AbstractGame {
 	
 	public void init(){}
 	
+	public void initChildren() {
+		rootObject.init();
+	}
+	
 	public final void input()
 	{
 		rootObject.input();

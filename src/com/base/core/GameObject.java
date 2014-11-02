@@ -76,6 +76,24 @@ public class GameObject {
 		return isEnabled;
 	}
 	
+	public void init()
+	{
+		for(GameComponent c : components)
+		{
+			if(c.isEnabled())
+			{
+				c.init();
+			}
+		}
+		for(GameObject g : children)
+		{
+			if(g.getEnabled())
+			{
+				g.init();
+			}
+		}
+	}
+	
 	public final void input()
 	{
 		for(GameComponent c : components)

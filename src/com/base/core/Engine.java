@@ -32,7 +32,14 @@ public class Engine {
 	{
 		Window.createDisplay(800, 600);
 		game.init();
+		game.initChildren();
 	}
+	
+	// variables to determine if the engine needs to call the input, update, or render methods
+	private boolean doInput = true;
+	private boolean doUpdate = true;
+	private boolean doRender = true;
+	
 	
 	// main game loop
 	private void gameLoop()
@@ -40,9 +47,12 @@ public class Engine {
 		isRunning = true;
 		while(isRunning)
 		{
-			input();
-			update();
-			render();
+			if(doInput)
+				input();
+			if(doUpdate)
+				update();
+			if(doRender)
+				render();
 			
 			Window.capFps(60);
 			Window.clearScreen();
@@ -67,5 +77,32 @@ public class Engine {
 	{
 		game.render();
 		Window.update();
+	}
+	
+	public void enableInput(boolean e)
+	{
+		doInput = e;
+	}
+	
+	public void enableUpdate(boolean e)
+	{
+		doUpdate = e;
+	}
+	
+	public void enableRender(boolean e)
+	{
+		doRender = e;
+	}
+
+	public boolean hasInput() {
+		return doInput;
+	}
+
+	public boolean hasUpdate() {
+		return doUpdate;
+	}
+
+	public boolean hasRender() {
+		return doRender;
 	}
 }
