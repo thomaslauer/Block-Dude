@@ -64,6 +64,7 @@ public class Engine {
 	// polls the input
 	private void input()
 	{
+		Input.poll();
 		game.input();
 	}
 	
