@@ -176,7 +176,7 @@ public class GameObject {
 		return null;
 	}
 	
-	public GameComponent getComponentNamed(String name)
+	public GameComponent getComponentByName(String name)
 	{
 		for(GameComponent c : components)
 		{
@@ -188,7 +188,7 @@ public class GameObject {
 		return null;
 	}
 	
-	public GameComponent getComponentType(String type)
+	public GameComponent getComponentByType(String type)
 	{
 		try {
 			Class<?> componentClass = Class.forName(type);
