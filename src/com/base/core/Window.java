@@ -50,7 +50,7 @@ public class Window {
 		}
 	}
 	
-	// method will set up orthographic 
+	// method will set up orthographic projection matrix
 	private static void initOrtho()
 	{
 		glMatrixMode(GL_PROJECTION);
@@ -59,8 +59,8 @@ public class Window {
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND);
-    	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    	setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    		setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	}
 	
 	// sets the clear color of the display
