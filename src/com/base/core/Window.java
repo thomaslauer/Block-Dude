@@ -63,7 +63,8 @@ public class Window {
     	setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	}
 	
-	public static void setClearColor(float r, float b, float g, float a)
+	// sets the clear color of the display
+	public static void setClearColor(float r, float g, float b, float a)
 	{
 		glClearColor(r, g, b, a);
 	}
@@ -80,11 +81,13 @@ public class Window {
 		return Display.isCloseRequested();
 	}
 	
+	// tells lwjgl to cap the frame rate to a given fps
 	public static void capFps(int fps)
 	{
 		Display.sync(fps);
 	}
 	
+	// clears the screen
 	public static void clearScreen()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

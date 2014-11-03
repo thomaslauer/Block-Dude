@@ -11,7 +11,8 @@ public class Resource {
 	{
 		Texture texture = null;
 		try {
-			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textures/" + fileName));
+			// tries to load a png file from res/textures/<FILENAME>.png
+			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/textures/" + fileName + ".png"));
 		} catch (IOException e) {
 			System.err.println("ERROR: Unable to load texture file");
 			e.printStackTrace();

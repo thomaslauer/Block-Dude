@@ -21,6 +21,7 @@ public class Engine {
 		game.setGameEngine(this);
 	}
 
+	// method to kick it off
 	public void start()
 	{
 		init();
@@ -79,21 +80,25 @@ public class Engine {
 		Window.update();
 	}
 	
+	// changes if we need to poll input
 	public void enableInput(boolean e)
 	{
 		doInput = e;
 	}
 	
+	// same for update
 	public void enableUpdate(boolean e)
 	{
 		doUpdate = e;
 	}
 	
+	// and for render
 	public void enableRender(boolean e)
 	{
 		doRender = e;
 	}
-
+	
+	// getters for doInput, doUpdate, doRender
 	public boolean hasInput() {
 		return doInput;
 	}
