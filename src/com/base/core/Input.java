@@ -33,4 +33,9 @@ public class Input {
 			}
 		}
 	}
+	
+	public static boolean isKeyDown(String key)
+	{
+		return keyState.get(key);
+	}
 }
