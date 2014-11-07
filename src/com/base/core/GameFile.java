@@ -40,7 +40,7 @@ public class GameFile {
 		}
 	}
 	
-	public void loadFromFile(String fileName)
+	public GameFile loadFromFile(String fileName)
 	{
 		try
 		{
@@ -63,6 +63,7 @@ public class GameFile {
 			System.out.println("ERROR: Could not load from save file");
 			e.printStackTrace();
 		}
+		return this;
 	}
 	
 	public void clearJsonObject()
