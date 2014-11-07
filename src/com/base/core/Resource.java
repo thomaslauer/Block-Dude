@@ -1,3 +1,8 @@
+/*
+ * Resource class will handle all of the things not related to the GameFile class, such as
+ * textures, sounds, and other stuff
+ */
+
 package com.base.core;
 
 import java.io.IOException;
@@ -16,7 +21,6 @@ public class Resource {
 		} catch (IOException e) {
 			System.err.println("ERROR: Unable to load texture file");
 			e.printStackTrace();
-			System.exit(1);
 		}
 		return texture;
 	}
