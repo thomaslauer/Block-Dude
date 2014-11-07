@@ -21,5 +21,8 @@ public class Game extends AbstractGame{
 		f.addTag("Name", "Thomas");
 		f.addTag("Age", "15");
 		System.out.println(f.getString());
+		f.saveToFile("test");
+		GameFile g = new GameFile();
+		g.loadFromFile("test");
 	}
 }
