@@ -5,14 +5,15 @@ package com.base.core;
  *
  */
 public class Transform {
-	//TODO: add a way to account for parent transforms (will have to be in other classes)
-	
+	// the parent Transform
 	public Transform parent;
 	
+	// x, y, and z of the transform
 	public float x;
 	public float y;
 	public float z;
 	
+	// makes a transform with the x, y, and z
 	public Transform(float x, float y, float z)
 	{
 		this.x = x;
@@ -20,17 +21,14 @@ public class Transform {
 		this.z = z;
 	}
 	
-	public Transform applyTransform(Transform t)
-	{
-		return new Transform(t.x + x, t.y + y, t.z + z);
-	}
-	
+	// sets the parent Transform
 	public Transform setParent(Transform t)
 	{
 		parent = t;
 		return this;
 	}
 	
+	// gets the world space of this transform
 	public Transform getWorldSpaceTransform()
 	{
 		if(parent != null)
