@@ -6,6 +6,8 @@ import com.base.core.Input;
 
 public class KeyboardMoveComponent extends GameComponent
 {
+	public float speed = 1.5f;
+	
 	public void init()
 	{
 		Input.addKey("left", Keyboard.KEY_A);
@@ -18,19 +20,19 @@ public class KeyboardMoveComponent extends GameComponent
 	{
 		if(Input.isKeyDown("left"))
 		{
-			parentTransform.x--;
+			parentTransform.x -= speed;
 		}
 		if(Input.isKeyDown("right"))
 		{
-			parentTransform.x++;
+			parentTransform.x += speed;
 		}
 		if(Input.isKeyDown("up"))
 		{
-			parentTransform.y--;
+			parentTransform.y -= speed;
 		}
 		if(Input.isKeyDown("down"))
 		{
-			parentTransform.y++;
+			parentTransform.y += speed;
 		}
 	}
 }
