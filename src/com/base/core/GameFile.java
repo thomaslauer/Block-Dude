@@ -1,6 +1,5 @@
 package com.base.core;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
@@ -163,7 +162,8 @@ public class GameFile {
 	
 	public int getInt(String key)
 	{
-		return (int) jsonObject.get(key);
+		Long value = (Long) jsonObject.get(key);
+		return value.intValue();
 	}
 	
 	public float getFloat(String key)

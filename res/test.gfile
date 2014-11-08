@@ -1,1 +1,5 @@
-{"Hello world":[1,2,150]}
+{
+	"Numbers":[1,2,150],
+	"Age":15,
+	"Name":"Thomas"
+}
