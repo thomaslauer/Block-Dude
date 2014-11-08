@@ -5,6 +5,10 @@
 
 package com.base.game;
 
+import java.util.ArrayList;
+
+import org.json.simple.JSONObject;
+
 import com.base.core.AbstractGame;
 import com.base.core.GameFile;
 import com.base.core.GameObject;
@@ -16,13 +20,17 @@ public class Game extends AbstractGame{
 		rootObject.addObject(new GameObject("face").setPosition(100, 100, 0)
 				.addComponent(new TextureRenderComponent("photo", 200, 200))
 				.addComponent(new KeyboardMoveComponent()));
-		
-		GameFile f = new GameFile();
-		f.addTag("Name", "Thomas");
-		f.addTag("Age", "15");
-		System.out.println(f.getString());
-		f.saveToFile("test");
 		GameFile g = new GameFile();
-		g.loadFromFile("test");
+		ArrayList<Integer> x = new ArrayList<Integer>();
+		x.add(1);
+		x.add(2);
+		x.add(150);
+		g.setTag("Hello world", x);
+		g.saveToFile("test");
+		
+		
+		GameFile f = new GameFile("test");
+		ArrayList<Integer> list = (ArrayList<Integer>) f.getArray("Hello world");
+		System.out.println(list.toString());
 	}
 }

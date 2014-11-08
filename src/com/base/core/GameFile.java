@@ -1,11 +1,11 @@
 package com.base.core;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GameFile {
 	// JSONObject to represent the data in the GameFile
@@ -13,7 +13,7 @@ public class GameFile {
 	
 	private static String fileExtension = ".gfile";
 	
-	// no argument constuctor
+	// no argument constructor
 	public GameFile()
 	{
 		jsonObject = new JSONObject();
@@ -27,7 +27,7 @@ public class GameFile {
 	}
 	
 	// returns the contents of the jsonObject (and then the file)
-	public String getString()
+	public String toString()
 	{
 		return jsonObject.toString();
 	}
@@ -48,7 +48,7 @@ public class GameFile {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			
 			// writes the object as a string
-			writer.write(getString());
+			writer.write(toString());
 			// closes the writer
 			writer.close();
 		} 
@@ -69,7 +69,7 @@ public class GameFile {
 			File file = new File("res/" + fileName + fileExtension);
 			
 			// makes a buffered reader with the file
-			BufferedReader reader = new BufferedReader(new FileReader(file);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
 			
 			// variables for the data and for the current line being read
 			String data = "";
@@ -80,6 +80,9 @@ public class GameFile {
 			{
 				data += line;
 			}
+			
+			// closes the reader to clean up memory
+			reader.close();
 			
 			// parses the data and sets it to the jsonObject
 			jsonObject = (JSONObject) JSONValue.parse(data);
@@ -106,29 +109,80 @@ public class GameFile {
 	
 	// adds a String to the jsonObject
 	@SuppressWarnings("unchecked")
-	public void addTag(String key, String value)
+	public GameFile setTag(String key, String value)
 	{
 		jsonObject.put(key, value);
+		return this;
 	}
 	
-	// adds an int
+	// adds an integer
 	@SuppressWarnings("unchecked")
-	public void addTag(String key, int value)
+	public GameFile setTag(String key, int value)
 	{
 		jsonObject.put(key, value);
+		return this;
 	}
 	
 	// adds a float
 	@SuppressWarnings("unchecked")
-	public void addTag(String key, float value)
+	public GameFile setTag(String key, float value)
 	{
 		jsonObject.put(key, value);
+		return this;
 	}
 	
 	// adds a boolean
 	@SuppressWarnings("unchecked")
-	public void addTag(String key, boolean value)
+	public GameFile setTag(String key, boolean value)
 	{
 		jsonObject.put(key, value);
+		return this;
+	}
+	
+	// adds a JSONObject
+	@SuppressWarnings("unchecked")
+	public GameFile setTag(String key, JSONObject value)
+	{
+		jsonObject.put(key, value);
+		return this;
+	}
+	
+	
+	//TODO: don't use primitives and instead use separate lists of each type
+	@SuppressWarnings("unchecked")
+	public GameFile setTag(String key, ArrayList<?> value)
+	{
+		jsonObject.put(key, value);
+		return this;
+	}
+	
+	public String getString(String key)
+	{
+		return (String) jsonObject.get(key);
+	}
+	
+	public int getInt(String key)
+	{
+		return (int) jsonObject.get(key);
+	}
+	
+	public float getFloat(String key)
+	{
+		return (float) jsonObject.get(key);
+	}
+	
+	public boolean getBoolean(String key)
+	{
+		return (boolean) jsonObject.get(key);
+	}
+	
+	public JSONObject getObject(String key)
+	{
+		return (JSONObject) jsonObject.get(key);
+	}
+	
+	public ArrayList<?> getArray(String key)
+	{
+		return (ArrayList<?>) jsonObject.get(key);
 	}
 }
