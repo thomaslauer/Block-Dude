@@ -7,14 +7,34 @@
 
 package com.base.core.components;
 
+import java.util.ArrayList;
+
 import com.base.core.*;
 
 public class GameComponent {
+	
+	protected static ArrayList<Class<? extends GameComponent>> componentRegistry = new ArrayList<Class<? extends GameComponent>>();
+	
+	@SuppressWarnings("unchecked")
+	public static void registerComponent()
+	{
+		StackTraceElement[] elementArray = new RuntimeException().getStackTrace();
+		
+		try {
+			Class<? extends GameComponent> c = (Class<? extends GameComponent>) Class.forName(elementArray[1].getClassName());
+			if(!componentRegistry.contains(c))
+				componentRegistry.add(c);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	
 	// a reference to the parent object
 	protected GameObject parentObject;
 	
 	// boolean which will enable or disable the component
-	private boolean isEnabled = true;
+	private boolean isEnabled = true;	
 	
 	// a name for the component
 	public String name;

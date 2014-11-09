@@ -14,6 +14,7 @@ public class KeyboardMoveComponent extends GameComponent
 		Input.addKey("right", Keyboard.KEY_D);
 		Input.addKey("up", Keyboard.KEY_W);
 		Input.addKey("down", Keyboard.KEY_S);
+		registerComponent();
 	}
 	
 	public void update()

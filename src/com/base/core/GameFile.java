@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class GameFile {
 	// JSONObject to represent the data in the GameFile
-	private JSONObject jsonObject;
+	protected JSONObject jsonObject;
 	
 	private static String fileExtension = ".gfile";
 	

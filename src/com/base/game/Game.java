@@ -5,10 +5,6 @@
 
 package com.base.game;
 
-import java.util.ArrayList;
-
-import org.json.simple.JSONObject;
-
 import com.base.core.AbstractGame;
 import com.base.core.GameFile;
 import com.base.core.GameObject;
