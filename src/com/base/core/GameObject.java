@@ -20,11 +20,14 @@ public class GameObject {
 	// name of the object
 	public String name;
 	
+	// an arraylist of the children and components
 	public ArrayList<GameObject> children;
 	public ArrayList<GameComponent> components;
 	
+	// reference to the engine
 	public Engine engine;
 	
+	// constructor that takes all args
 	public GameObject(float x, float y, float z, String name)
 	{
 		transform = new Transform(x, y, z);
@@ -34,28 +37,32 @@ public class GameObject {
 		this.name = name;
 	}
 	
+	// constructor that takes position
 	public GameObject(float x, float y, float z)
 	{
 		this(x, y, z, null);
 	}
 	
+	// constructor that takes name
 	public GameObject(String name)
 	{
 		this(0, 0, 0, name);
 	}
 	
+	// no argument constructor
 	public GameObject()
 	{
 		this(0, 0, 0, null);
 	}
 	
-	
+	// method to set the name of the object
 	public GameObject setName(String name)
 	{
 		this.name = name;
 		return this;
 	}
 	
+	// method that sets the position of the object
 	public GameObject setPosition(float x, float y, float z)
 	{
 		transform.x = x;
@@ -64,18 +71,20 @@ public class GameObject {
 		return this;
 	}
 	
-
+	// sets if the object is enabled
 	public GameObject setEnabled(boolean enabled)
 	{
 		isEnabled = enabled;
 		return this;
 	}
 	
+	// checks if the object is enabled
 	public boolean getEnabled()
 	{
 		return isEnabled;
 	}
 	
+	// initializes all the children and components
 	public void init()
 	{
 		for(GameComponent c : components)
@@ -94,6 +103,7 @@ public class GameObject {
 		}
 	}
 	
+	// checks the input for all of the children and components
 	public final void input()
 	{
 		for(GameComponent c : components)
@@ -112,6 +122,7 @@ public class GameObject {
 		}
 	}
 	
+	// updates all the children and components
 	public final void update()
 	{
 		for(GameComponent c : components)
@@ -131,6 +142,7 @@ public class GameObject {
 		}
 	}
 	
+	// tells the children and components to render stuff
 	public final void render()
 	{
 		for(GameComponent c : components)
@@ -149,6 +161,7 @@ public class GameObject {
 		}
 	}
 	
+	// adds a child object, and ads it to the engine
 	public GameObject addObject(GameObject o)
 	{
 		o.setEngine(engine);
@@ -157,6 +170,7 @@ public class GameObject {
 		return this;
 	}
 	
+	// adds a component to the engine
 	public GameObject addComponent(GameComponent c)
 	{
 		c.setParentObject(this);
@@ -164,6 +178,7 @@ public class GameObject {
 		return this;
 	}
 	
+	// gets a child object of a specific name
 	public GameObject getChildObject(String name)
 	{
 		for(GameObject g : children)
@@ -176,6 +191,7 @@ public class GameObject {
 		return null;
 	}
 	
+	// gets a component by name
 	public GameComponent getComponentByName(String name)
 	{
 		for(GameComponent c : components)
@@ -188,6 +204,7 @@ public class GameObject {
 		return null;
 	}
 	
+	// gets a component by type
 	public GameComponent getComponentByType(String type)
 	{
 		try {
@@ -207,6 +224,7 @@ public class GameObject {
 		return null;
 	}
 	
+	// sets the engine of this object and all children
 	public void setEngine(Engine e)
 	{
 		engine = e;
