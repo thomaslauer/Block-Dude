@@ -9,26 +9,38 @@ package com.base.core;
 import com.base.game.*;
 
 public class Engine {
-	// the big game
+	/**
+	 * The game used by the entire engine
+	 */
 	public Game game;
-	// if the game is running
+	
+	/**
+	 * If the game is running
+	 */
 	private boolean isRunning = false;
 	
-	// makes a new engine with the game given
+	/**
+	 * Creates a new engine with the specified game
+	 * @param game The game to be used
+	 */
 	public Engine(Game game)
 	{
 		this.game = game;
 		game.setGameEngine(this);
 	}
 
-	// method to kick it off
+	/**
+	 * Starts the entire game
+	 */
 	public void start()
 	{
 		init();
 		gameLoop();
 	}
 	
-	// initializes the game and other needed items
+	/**
+	 * initializes the game and other needed items
+	 */
 	private void init()
 	{
 		Window.createDisplay(800, 600);
@@ -36,13 +48,24 @@ public class Engine {
 		game.initChildren();
 	}
 	
-	// variables to determine if the engine needs to call the input, update, or render methods
+	/**
+	 * if the engine will poll input
+	 */
 	private boolean doInput = true;
+	
+	/**
+	 * if the engine will update the game
+	 */
 	private boolean doUpdate = true;
+	
+	/**
+	 * if the engine will render the game
+	 */
 	private boolean doRender = true;
 	
-	
-	// main game loop
+	/**
+	 * the main game loop
+	 */
 	private void gameLoop()
 	{
 		isRunning = true;
@@ -61,53 +84,76 @@ public class Engine {
 				isRunning = false;
 		}
 	}
-	// polls the input
+	/**
+	 * polls the input
+	 */
 	private void input()
 	{
 		Input.poll();
 		game.input();
 	}
 	
-	// updates the game
+	/**
+	 * updates the game
+	 */
 	private void update()
 	{
 		game.update();
 	}
 	
-	// renders the game
+	/**
+	 * renders the game
+	 */
 	private void render()
 	{
 		game.render();
 		Window.update();
 	}
 	
-	// changes if we need to poll input
+	/**
+	 * enables or disables the input
+	 */
 	public void enableInput(boolean e)
 	{
 		doInput = e;
 	}
 	
-	// same for update
+	/**
+	 * enables or disables the update cycle
+	 */
 	public void enableUpdate(boolean e)
 	{
 		doUpdate = e;
 	}
 	
-	// and for render
+	/**
+	 * enables or disables render the game
+	 */
 	public void enableRender(boolean e)
 	{
 		doRender = e;
 	}
 	
-	// getters for doInput, doUpdate, doRender
+	/**
+	 * checks if the engine will check the input
+	 * @return if the input is enabled
+	 */
 	public boolean hasInput() {
 		return doInput;
 	}
-
+	
+	/**
+	 * checks if the engine will update
+	 * @return if the update is enabled
+	 */
 	public boolean hasUpdate() {
 		return doUpdate;
 	}
-
+	
+	/**
+	 * checks if the engine will render
+	 * @return if rendering is enabled
+	 */
 	public boolean hasRender() {
 		return doRender;
 	}
