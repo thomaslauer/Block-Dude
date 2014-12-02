@@ -14,9 +14,7 @@ public class Engine {
 	 */
 	public Game game;
 	
-	/**
-	 * If the game is running
-	 */
+	// if the game is running
 	private boolean isRunning = false;
 	
 	/**
@@ -38,9 +36,7 @@ public class Engine {
 		gameLoop();
 	}
 	
-	/**
-	 * initializes the game and other needed items
-	 */
+	// initializes the game and other needed items
 	private void init()
 	{
 		Window.createDisplay(800, 600);
@@ -48,24 +44,16 @@ public class Engine {
 		game.initChildren();
 	}
 	
-	/**
-	 * if the engine will poll input
-	 */
+	// if the engine will poll input
 	private boolean doInput = true;
 	
-	/**
-	 * if the engine will update the game
-	 */
+	// if the engine will update the game
 	private boolean doUpdate = true;
 	
-	/**
-	 * if the engine will render the game
-	 */
+	// if the engine will render the game
 	private boolean doRender = true;
 	
-	/**
-	 * the main game loop
-	 */
+	// the main game loop
 	private void gameLoop()
 	{
 		isRunning = true;
@@ -84,26 +72,21 @@ public class Engine {
 				isRunning = false;
 		}
 	}
-	/**
-	 * polls the input
-	 */
+
+	// polls the input
 	private void input()
 	{
 		Input.poll();
 		game.input();
 	}
 	
-	/**
-	 * updates the game
-	 */
+	// updates the game
 	private void update()
 	{
 		game.update();
 	}
 	
-	/**
-	 * renders the game
-	 */
+	// renders the game
 	private void render()
 	{
 		game.render();
