@@ -1,8 +1,3 @@
-/*
- * Resource class will handle all of the things not related to the GameFile class, such as
- * textures, sounds, and other stuff
- */
-
 package com.base.core;
 
 import java.io.IOException;
@@ -11,7 +6,16 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
+/**
+ * Resource class will handle all of the things not related to the GameFile class, such as
+ * textures, sounds, and other stuff
+ */
 public class Resource {
+	/**
+	 * loads a texture from a specified file name
+	 * @param fileName path of the file, used as res/textures/NAME_HERE.png
+	 * @return the texture
+	 */
 	public static Texture loadTexture(String fileName)
 	{
 		Texture texture = null;

@@ -1,4 +1,4 @@
-/**
+/*
  * Game class
  * Handles all the game stuff
  */

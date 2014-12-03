@@ -1,13 +1,12 @@
+package com.base.core;
+
+import com.base.game.*;
+
 /**
  * Engine class
  * runs game loop and handles everything 
  * not related to rendering or the game
  */
-
-package com.base.core;
-
-import com.base.game.*;
-
 public class Engine {
 	/**
 	 * The game used by the entire engine
@@ -95,6 +94,7 @@ public class Engine {
 	
 	/**
 	 * enables or disables the input
+	 * @param e enabled
 	 */
 	public void enableInput(boolean e)
 	{
@@ -103,6 +103,7 @@ public class Engine {
 	
 	/**
 	 * enables or disables the update cycle
+	 * @param e enabled
 	 */
 	public void enableUpdate(boolean e)
 	{
@@ -111,6 +112,7 @@ public class Engine {
 	
 	/**
 	 * enables or disables render the game
+	 * @param e enabled
 	 */
 	public void enableRender(boolean e)
 	{

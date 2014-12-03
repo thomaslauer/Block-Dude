@@ -1,5 +1,10 @@
 package com.base.core;
 
+/**
+ * This is the AbstractGame class, which ensures the code the designer writes fits into the code for the engine.
+ * In order to use this, extend it and override the init() method to set up the game scene, all based off of the rootObject.
+ * Put all the GameObjects as children of the rootObject, and have all your components attached to their objects.
+ */
 public abstract class AbstractGame {
 	// gameObject to act as the root of the hierarchy
 	public GameObject rootObject;

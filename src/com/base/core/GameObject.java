@@ -1,15 +1,14 @@
-/**
- * GameObject Class
- * Is the basis of the hierarchy system
- * It's only job is to update the components, which will do the actual computations
- */
-
 package com.base.core;
 
 import java.util.ArrayList;
 
 import com.base.core.components.GameComponent;
 
+/**
+ * GameObject Class
+ * Is the basis of the hierarchy system
+ * It's only job is to update the components, which will do the actual computations
+ */
 public class GameObject {
 	// if any computations should be done on this object
 	private boolean isEnabled = true;

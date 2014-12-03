@@ -1,34 +1,14 @@
+package com.base.core.components;
+
+import com.base.core.*;
+
 /**
  * GameComponent class
  * framework to be extended in other code
  * the components will handle the meat of the program, such as
  * rendering, physics, input, and more
  */
-
-package com.base.core.components;
-
-import java.util.ArrayList;
-
-import com.base.core.*;
-
 public class GameComponent {
-	
-	protected static ArrayList<Class<? extends GameComponent>> componentRegistry = new ArrayList<Class<? extends GameComponent>>();
-	
-	@SuppressWarnings("unchecked")
-	public static void registerComponent()
-	{
-		StackTraceElement[] elementArray = new RuntimeException().getStackTrace();
-		
-		try {
-			Class<? extends GameComponent> c = (Class<? extends GameComponent>) Class.forName(elementArray[1].getClassName());
-			if(!componentRegistry.contains(c))
-				componentRegistry.add(c);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
-	}
 	
 	/**
 	 * A reference to the parent GameObject
