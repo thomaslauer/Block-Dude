@@ -9,6 +9,9 @@ import org.newdawn.slick.util.ResourceLoader;
 /**
  * Resource class will handle all of the things not related to the GameFile class, such as
  * textures, sounds, and other stuff
+ * 
+ * @author Thomas Lauer
+ * 
  */
 public class Resource {
 	/**

@@ -3,10 +3,12 @@ package com.base.core.components;
 import com.base.core.*;
 
 /**
- * GameComponent class
- * framework to be extended in other code
+ * This is a framework to be extended in other code.
  * the components will handle the meat of the program, such as
- * rendering, physics, input, and more
+ * rendering, physics, input, and more.
+ * 
+ * @author Thomas Lauer
+ * 
  */
 public class GameComponent {
 	

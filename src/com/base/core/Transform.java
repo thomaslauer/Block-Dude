@@ -1,8 +1,10 @@
 package com.base.core;
 
 /**
- * Transform class to give a really easy way to handle x, y, and z coords
- *
+ * Transform class to give a really easy way to handle x, y, and z positions
+ * 
+ * @author Thomas Lauer
+ * 
  */
 public class Transform {
 	// the parent Transform

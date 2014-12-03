@@ -5,6 +5,13 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 
+/**
+ * Controls the window used in the game. It handles things such as the size, 
+ * name, projection matrix, clear color, and fps cap
+ * 
+ * @author Thomas Lauer
+ *
+ */
 public class Window {
 	// current display mode
 	public static DisplayMode currentDisplayMode;

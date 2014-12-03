@@ -8,6 +8,9 @@ import com.base.core.components.GameComponent;
  * GameObject Class
  * Is the basis of the hierarchy system
  * It's only job is to update the components, which will do the actual computations
+ * 
+ * @author Thomas Lauer
+ * 
  */
 public class GameObject {
 	// if any computations should be done on this object

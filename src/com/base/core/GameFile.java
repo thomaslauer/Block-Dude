@@ -6,6 +6,12 @@ import org.json.simple.JSONValue;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * A simple class wrapper for the JSONObject that adds a few helpful methods
+ * 
+ * @author Thomas Lauer
+ *
+ */
 public class GameFile {
 	// JSONObject to represent the data in the GameFile
 	protected JSONObject jsonObject;

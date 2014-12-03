@@ -5,6 +5,9 @@ import com.base.core.Engine;
 
 /**
  * Main class which just kicks the whole thing off
+ * 
+ * @author Thomas Lauer
+ * 
  */
 
 public class Main {

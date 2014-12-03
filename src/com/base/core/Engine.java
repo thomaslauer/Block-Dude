@@ -6,6 +6,9 @@ import com.base.game.*;
  * Engine class
  * runs game loop and handles everything 
  * not related to rendering or the game
+ * 
+ * @author Thomas Lauer
+ *
  */
 public class Engine {
 	/**
