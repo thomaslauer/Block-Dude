@@ -21,7 +21,7 @@ public class Engine {
 	
 	/**
 	 * Creates a new engine with the specified game
-	 * @param game The game to be used
+	 * @param game The game to be used by the rest of the engine
 	 */
 	public Engine(Game game)
 	{
@@ -73,6 +73,7 @@ public class Engine {
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}
+		cleanUp();
 	}
 
 	// polls the input
@@ -93,6 +94,12 @@ public class Engine {
 	{
 		game.render();
 		Window.update();
+	}
+	
+	// deals with deleting things from memory and cleaning up the system
+	private void cleanUp()
+	{
+		Window.destroy();
 	}
 	
 	/**

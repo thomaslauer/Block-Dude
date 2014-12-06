@@ -5,10 +5,12 @@
 
 package com.base.game;
 
+import java.util.ArrayList;
+
 import com.base.core.AbstractGame;
-import com.base.core.GameFile;
 import com.base.core.GameObject;
 import com.base.core.components.*;
+import com.base.game.components.WorldComponent;
 
 public class Game extends AbstractGame{
 	public void init()
@@ -17,8 +19,6 @@ public class Game extends AbstractGame{
 				.addComponent(new TextureRenderComponent("photo", 200, 200))
 				.addComponent(new KeyboardMoveComponent()));
 		
-		GameFile g = new GameFile("test");
-		System.out.println(g.getInt("Age"));
-
+		WorldComponent c = new WorldComponent("GameFile1");
 	}
 }

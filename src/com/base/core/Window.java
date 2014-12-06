@@ -16,7 +16,11 @@ public class Window {
 	// current display mode
 	public static DisplayMode currentDisplayMode;
 	
-	// creates a window with the given dimensions
+	/**
+	 * Creates a display with the given dimensions 
+	 * @param sx The x size in pixels
+	 * @param sy The y size in pixels
+	 */
 	public static void createDisplay(int sx, int sy)
 	{
 		try
@@ -38,7 +42,11 @@ public class Window {
 		}
 	}
 	
-	// changes the size of the window
+	/**
+	 * Makes a new DisplayMode with a new x and y
+	 * @param sx the width in pixels
+	 * @param sy the height in pixels
+	 */
 	public static void setDisplayMode(int sx, int sy)
 	{
 		try 
@@ -57,7 +65,9 @@ public class Window {
 		}
 	}
 	
-	// method will set up orthographic projection matrix
+	/**
+	 * Sets the orthographic projection matrix
+	 */
 	private static void initOrtho()
 	{
 		glMatrixMode(GL_PROJECTION);
@@ -65,38 +75,67 @@ public class Window {
 		glOrtho(0, currentDisplayMode.getWidth(), currentDisplayMode.getHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_TEXTURE_2D);
+		
 		glEnable(GL_BLEND);
-    		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    		setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    	
+		setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	}
 	
-	// sets the clear color of the display
+	/**
+	 * sets the clear color of the display
+	 * @param r Red
+	 * @param g Green
+	 * @param b Blue
+	 * @param a Alpha
+	 */
 	public static void setClearColor(float r, float g, float b, float a)
 	{
 		glClearColor(r, g, b, a);
 	}
 	
-	// updates the display and pushes all drawing to screen
+	/**
+	 * Draws whatever is in the buffer to the display, should be called once per frame
+	 */
 	public static void update()
 	{
 		Display.update();
 	}
 	
-	// checks if a close has been requested
+	/**
+	 * checks if the user has requested a close of the window
+	 * @return if the user has clicked the x of the window
+	 */
 	public static boolean isCloseRequested()
 	{
 		return Display.isCloseRequested();
 	}
 	
-	// tells lwjgl to cap the frame rate to a given fps
+	/**
+	 * tells lwjgl to cap the frame rate of the window
+	 * @param fps frame per second cap
+	 */
 	public static void capFps(int fps)
 	{
 		Display.sync(fps);
 	}
 	
-	// clears the screen
+	/**
+	 * clears the color and depth buffers of the frame buffer, which clears the screen
+	 */
 	public static void clearScreen()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+	
+	/**
+	 * closes the display, removes all resources from the GPU
+	 */
+	public static void destroy()
+	{
+		Display.destroy();
 	}
 }
