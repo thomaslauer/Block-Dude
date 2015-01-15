@@ -20,7 +20,7 @@ public class GameComponent {
 	/**
 	 * enables or disables the component
 	 */
-	private boolean isEnabled = true;	
+	protected boolean isEnabled = true;	
 	
 	/**
 	 * the individual component name
@@ -35,7 +35,7 @@ public class GameComponent {
 	/**
 	 * reference to the game engine
 	 */
-	public Engine engine;
+	protected Engine engine;
 	
 	/**
 	 * constructor that takes a name
