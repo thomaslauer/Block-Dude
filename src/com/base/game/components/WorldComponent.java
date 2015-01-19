@@ -1,6 +1,7 @@
 package com.base.game.components;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.base.core.*;
 import com.base.core.components.*;
@@ -18,7 +19,7 @@ public class WorldComponent extends GameComponent
 	/**
 	 * The file holding json data for the level
 	 */
-	public GameFile file;
+	private GameFile file;
 	
 	/**
 	 * 2d array that holds the block codes
@@ -31,6 +32,16 @@ public class WorldComponent extends GameComponent
 	private int sizeX, sizeY;
 	
 	/**
+	 * size of each block
+	 */
+	private int resolution;
+	
+	/**
+	 * holds the texture file names
+	 */
+	private HashMap<Integer, String> textureFiles;
+	
+	/**
 	 * Makes a new component from a file, loading the size in x and y, along with all the data 
 	 * from json into the 2d array
 	 * @param fileName
@@ -38,9 +49,33 @@ public class WorldComponent extends GameComponent
 	public WorldComponent(String fileName)
 	{
 		file = new GameFile(fileName);
-		
+		textureFiles = new HashMap<Integer, String>();
+		for(int i = 0; i < file.getInt("numOfTextures"); i++)
+		{
+			try
+			{
+				textureFiles.put(i, file.getString("T" + i));
+				System.out.println("Photo file " + i + " " + file.getString("T" + i));
+			}
+			catch(Exception ex)
+			{
+				System.err.println("ERROR: could not find texture file name");
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public void init()
+	{
+		rebuild();
+	}
+	
+	
+	public void rebuild()
+	{
 		sizeX = file.getInt("SizeX");
 		sizeY = file.getInt("SizeY");
+		resolution = file.getInt("Resolution");
 		
 		world = new int[sizeX][sizeY];
 		
@@ -62,11 +97,20 @@ public class WorldComponent extends GameComponent
 				world[x][y] = (int) val;
 			}
 		}
+		
 		for(int i = 0; i < sizeY; i++)
 		{
 			for(int j = 0; j < sizeX; j++)
 			{
-				System.out.print(world[j][i]);
+				//System.out.print(world[j][i]);
+				if(world[j][i] > 0)
+				{
+					System.out.println(world[j][i]);
+					System.out.println(textureFiles.get(world[j][i]-1));
+					parentObject.addObject(new GameObject(j * resolution, i * resolution, 0)
+							.addComponent(new TextureRenderComponent(textureFiles.get(world[j][i]-1), resolution, resolution)));
+					
+				}
 			}
 			System.out.println();
 		}

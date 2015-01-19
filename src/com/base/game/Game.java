@@ -5,8 +5,6 @@
 
 package com.base.game;
 
-import java.util.ArrayList;
-
 import com.base.core.AbstractGame;
 import com.base.core.GameObject;
 import com.base.core.components.*;
@@ -16,9 +14,7 @@ public class Game extends AbstractGame{
 	public void init()
 	{
 		rootObject.addObject(new GameObject("face").setPosition(100, 100, 0)
-				.addComponent(new TextureRenderComponent("photo", 200, 200))
-				.addComponent(new KeyboardMoveComponent()));
-		
-		WorldComponent c = new WorldComponent("GameFile1");
+				.addComponent(new KeyboardMoveComponent())
+				.addComponent(new WorldComponent("GameFile1")));
 	}
 }
