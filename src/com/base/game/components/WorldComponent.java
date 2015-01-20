@@ -78,6 +78,7 @@ public class WorldComponent extends GameComponent
 	 */
 	public void rebuild()
 	{
+		removeWorldObjects();
 		sizeX = file.getInt("SizeX");
 		sizeY = file.getInt("SizeY");
 		resolution = file.getInt("Resolution");
@@ -112,12 +113,26 @@ public class WorldComponent extends GameComponent
 				{
 					//System.out.println(world[j][i]);
 					//System.out.println(textureFiles.get(world[j][i]-1));
-					parentObject.addObject(new GameObject(j * resolution, i * resolution, 0)
+					parentObject.addObject(new GameObject(j * resolution, i * resolution, 0, "WORLD " + j + " " + i)
 							.addComponent(new TextureRenderComponent(textureFiles.get(world[j][i]-1), resolution, resolution)));
 					
 				}
 			}
 			//System.out.println();
+		}
+	}
+	
+	/*
+	 * removes all the objects in the world graph
+	 */
+	public void removeWorldObjects()
+	{
+		for(GameObject g : parentObject.children)
+		{
+			if(g.name.startsWith("WORLD"))
+			{
+				parentObject.children.remove(g);
+			}
 		}
 	}
 	
