@@ -110,14 +110,14 @@ public class WorldComponent extends GameComponent
 				//System.out.print(world[j][i]);
 				if(world[j][i] > 0)
 				{
-					System.out.println(world[j][i]);
-					System.out.println(textureFiles.get(world[j][i]-1));
+					//System.out.println(world[j][i]);
+					//System.out.println(textureFiles.get(world[j][i]-1));
 					parentObject.addObject(new GameObject(j * resolution, i * resolution, 0)
 							.addComponent(new TextureRenderComponent(textureFiles.get(world[j][i]-1), resolution, resolution)));
 					
 				}
 			}
-			System.out.println();
+			//System.out.println();
 		}
 	}
 	
