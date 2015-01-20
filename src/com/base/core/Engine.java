@@ -41,7 +41,7 @@ public class Engine {
 	// initializes the game and other needed items
 	private void init()
 	{
-		Window.createDisplay(800, 600);
+		Window.createDisplay(1280, 720);
 		game.init();
 		game.initChildren();
 	}

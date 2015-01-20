@@ -42,8 +42,8 @@ public class WorldComponent extends GameComponent
 	private HashMap<Integer, String> textureFiles;
 	
 	/**
-	 * Makes a new component from a file, loading the size in x and y, along with all the data 
-	 * from json into the 2d array
+	 * Makes a new component from a file, loading the size in x and y and other 
+	 * data from json
 	 * @param fileName
 	 */
 	public WorldComponent(String fileName)
@@ -65,12 +65,17 @@ public class WorldComponent extends GameComponent
 		}
 	}
 	
+	/**
+	 * just calls the rebuild method
+	 */
 	public void init()
 	{
 		rebuild();
 	}
 	
-	
+	/**
+	 * loads data from the file and puts it into the world array
+	 */
 	public void rebuild()
 	{
 		sizeX = file.getInt("SizeX");
