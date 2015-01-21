@@ -42,7 +42,7 @@ public class GameObject {
 	// constructor that takes position
 	public GameObject(float x, float y, float z)
 	{
-		this(x, y, z, null);
+		this(x, y, z, "");
 	}
 	
 	// constructor that takes name
@@ -54,7 +54,7 @@ public class GameObject {
 	// no argument constructor
 	public GameObject()
 	{
-		this(0, 0, 0, null);
+		this(0, 0, 0, "");
 	}
 	
 	// method to set the name of the object
