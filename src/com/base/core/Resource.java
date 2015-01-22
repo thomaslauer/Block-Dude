@@ -31,4 +31,11 @@ public class Resource {
 		}
 		return texture;
 	}
+	
+	
+	//TODO add loadingTextures methods
+	/**
+	 * holds loaded textures to keep from having to read from disk
+	 */
+	private static HashMap<String, Texture> loadedTextures = new HashMap<String, Texture>();
 }
