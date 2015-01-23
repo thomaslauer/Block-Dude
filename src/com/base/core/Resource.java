@@ -3,6 +3,9 @@ package com.base.core;
 import java.io.IOException;
 import java.util.HashMap;
 
+import java.awt.image.*;
+import javax.imageio.*;
+
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -52,5 +55,21 @@ public class Resource {
 	public static HashMap<String, Texture> getLoadedTextures()
 	{
 		return loadedTextures;
+	}
+	
+	public BufferedImage loadImage(String fileName)
+	{
+		BufferedImage img;
+		
+		try
+		{
+			img = ImageIO.read(new File("res/textures/" + fileName + ".png"));
+		}
+		catch(IOException ex)
+		{
+			System.err.println("ERROR: could not load image");
+			ex.printStackTrace();
+		}
+		return img;
 	}
 }
