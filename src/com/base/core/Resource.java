@@ -1,9 +1,10 @@
 package com.base.core;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
 import java.awt.image.*;
+
 import javax.imageio.*;
 
 import org.newdawn.slick.opengl.Texture;
@@ -59,7 +60,7 @@ public class Resource {
 	
 	public BufferedImage loadImage(String fileName)
 	{
-		BufferedImage img;
+		BufferedImage img = null;
 		
 		try
 		{
