@@ -58,7 +58,7 @@ public class Resource {
 		return loadedTextures;
 	}
 	
-	public BufferedImage loadImage(String fileName)
+	public static BufferedImage loadImage(String fileName)
 	{
 		BufferedImage img = null;
 		
