@@ -48,16 +48,33 @@ public class Resource {
 		return loadedTextures.get(fileName);
 	}
 	
+	
+	/**
+	 * unloads a texture from the system
+	 * @param fileName name of the file
+	 */
 	public static void unloadTexture(String fileName)
 	{
 		loadedTextures.remove(fileName);
 	}
 	
+	/**
+	 * Gets the hashMap of all the loaded textures
+	 * 
+	 * The string is the file name, the Texture is, well, the texture
+	 * 
+	 * @return HashMap of loadedTextures
+	 */
 	public static HashMap<String, Texture> getLoadedTextures()
 	{
 		return loadedTextures;
 	}
 	
+	/**
+	 * loads a buffered image from a file
+	 * @param fileName Name of the png file, starting at the res/ folder
+	 * @return the Buffered Image
+	 */
 	public static BufferedImage loadImage(String fileName)
 	{
 		BufferedImage img = null;
