@@ -1,0 +1,16 @@
+{
+	"blocks":[
+		{
+			"colorR":255,
+			"colorG":0,
+			"colorB":255,
+			"colorA":0,
+			"texture":"bricks",
+			"name":"bricks",
+		}
+	],
+	
+	"bitmaps":[
+		"bitmap"
+	],
+}

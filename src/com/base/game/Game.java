@@ -6,9 +6,9 @@
 package com.base.game;
 
 import com.base.core.AbstractGame;
-import com.base.core.Bitmap;
 import com.base.core.GameObject;
 import com.base.core.components.*;
+import com.base.game.components.BitmapWorldComponent;
 import com.base.game.components.WorldComponent;
 
 public class Game extends AbstractGame{
@@ -18,7 +18,7 @@ public class Game extends AbstractGame{
 				.addComponent(new ReverseKeyboardMoveComponent())
 				.addComponent(new WorldComponent("GameFile1")));
 		
-		Bitmap m = new Bitmap("bitmap");
-		System.out.println(m.getR(0, 0));
+		BitmapWorldComponent c = new BitmapWorldComponent("test", "game files/def");
+		c.loadFile();
 	}
 }
