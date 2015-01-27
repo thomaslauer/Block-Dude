@@ -10,7 +10,7 @@ public class Bitmap {
 	
 	public Bitmap(String fileName)
 	{
-		BufferedImage img = Resource.loadImage(fileName);
+		BufferedImage img = Resource.loadImage("bitmaps/" + fileName);
 		width = img.getWidth();
 		height = img.getHeight();
 		
