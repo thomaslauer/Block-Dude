@@ -5,6 +5,10 @@
     </target>
 
     <target name="compile">
+    	
+    	<property name="src.dir" value="src"/>
+    	<property name="classes.dir" value="classes"/>
+    	
     	<mkdir dir="${classes.dir}"/>
     	    <javac srcdir="${src.dir}" destdir="${classes.dir}">
     	        <classpath>
