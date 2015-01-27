@@ -23,5 +23,8 @@
     </target>
 	
 	<target name="test">
+		<antcall target="clean"></antcall>
+		<antcall target="compile"></antcall>
+		<antcall target="jar"></antcall>
 	</target>
 </project>
