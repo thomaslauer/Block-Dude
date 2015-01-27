@@ -155,7 +155,7 @@ public class GameFile {
 	
 	//TODO: don't use primitives and instead use separate lists of each type
 	@SuppressWarnings("unchecked")
-	public GameFile setTag(String key, ArrayList<?> value)
+	public GameFile setTag(String key, ArrayList<? extends Object> value)
 	{
 		jsonObject.put(key, value);
 		return this;
