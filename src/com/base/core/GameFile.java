@@ -155,7 +155,7 @@ public class GameFile {
 	
 	//TODO: don't use primitives and instead use separate lists of each type
 	@SuppressWarnings("unchecked")
-	public GameFile setTag(String key, ArrayList<? extends Object> value)
+	public GameFile setTag(String key, ArrayList<Object> value)
 	{
 		jsonObject.put(key, value);
 		return this;
@@ -187,8 +187,8 @@ public class GameFile {
 		return (JSONObject) jsonObject.get(key);
 	}
 	
-	public ArrayList<? extends Object> getArray(String key)
+	public ArrayList<Object> getArray(String key)
 	{
-		return (ArrayList<?>) jsonObject.get(key);
+		return jsonObject.get(key);
 	}
 }
