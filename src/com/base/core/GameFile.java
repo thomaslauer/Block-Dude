@@ -187,6 +187,7 @@ public class GameFile {
 		return (JSONObject) jsonObject.get(key);
 	}
 	
+<<<<<<< HEAD
 	@SuppressWarnings("unchecked")
 	public ArrayList<Object> getArray(String key)
 	{
@@ -203,5 +204,10 @@ public class GameFile {
 	public ArrayList<JSONObject> getJsonArray(String key)
 	{
 		return (ArrayList<JSONObject>) jsonObject.get(key);
+=======
+	public ArrayList<Object> getArray(String key)
+	{
+		return (ArrayList<Object>) jsonObject.get(key);
+>>>>>>> master
 	}
 }
