@@ -8,4 +8,5 @@ This is a totally full fledged game engine, with a whole game object and compone
 The link to the the challenge is [here](http://www.sdstate.edu/eecs/program-design/upload/PDC-2015-Problem-Description.pdf)
 
 Link to the [Travis CI](https://travis-ci.org/thomaslauer/Block-Dude), here's the current build status
+
 ![Image](https://travis-ci.org/thomaslauer/Block-Dude.svg?branch=master)
