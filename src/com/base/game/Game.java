@@ -17,8 +17,5 @@ public class Game extends AbstractGame{
 		rootObject.addObject(new GameObject("face").setPosition(100, 100, 0)
 				.addComponent(new ReverseKeyboardMoveComponent())
 				.addComponent(new WorldComponent("GameFile1")));
-		
-		Bitmap m = new Bitmap("bitmap");
-		System.out.println(m.getR(0, 0));
 	}
 }
