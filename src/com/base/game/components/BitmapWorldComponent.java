@@ -27,11 +27,10 @@ public class BitmapWorldComponent extends GameComponent
 		
 		loadedBlockData = new HashMap<String, Block>();
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	public void loadFile()
 	{
-		ArrayList<JSONObject> objects = (ArrayList<JSONObject>) file.getArray("blocks");
+		ArrayList<JSONObject> objects = file.getJsonArray("blocks");
 		
 		for(JSONObject o : objects)
 		{
@@ -39,7 +38,7 @@ public class BitmapWorldComponent extends GameComponent
 			System.out.println("adding block " + (String)o.get("name"));
 		}
 		
-		ArrayList<String> bitmaps = (ArrayList<String>)file.getArray("bitmaps");
+		ArrayList<String> bitmaps = file.getStringArray("bitmaps");
 		
 		for(String s : bitmaps)
 		{
