@@ -21,8 +21,13 @@
     </target>
 
     <target name="jar">
+    	
+    	<property name="src.dir" value="src"/>
+    	<property name="lib.dir" value="lib/jar/"/>
+    	<property name="classes.dir" value="classes"/>
+    	
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/game.jar" basedir="build/classes">
+        <jar destfile="build/jar/game.jar" basedir="${classes.dir}">
             <manifest>
                 <attribute name="Main-Class" value="com.base.game.Main"/>
             </manifest>
