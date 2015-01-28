@@ -88,7 +88,7 @@ public class WorldComponent extends GameComponent
 		for(int y = 0; y < sizeY; y++)
 		{
 			String levelCode = "L" + y;
-			ArrayList<?> tempArray = file.getArray(levelCode);
+			ArrayList<Object> tempArray = file.getArray(levelCode);
 			
 			if(tempArray.size() != sizeX)
 			{
