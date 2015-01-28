@@ -189,6 +189,6 @@ public class GameFile {
 	
 	public ArrayList<Object> getArray(String key)
 	{
-		return jsonObject.get(key);
+		return (ArrayList<Object>) jsonObject.get(key);
 	}
 }
