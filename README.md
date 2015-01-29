@@ -10,3 +10,9 @@ The link to the the challenge is [here](http://www.sdstate.edu/eecs/program-desi
 Link to the [Travis CI](https://travis-ci.org/thomaslauer/Block-Dude), here's the current build status
 
 ![Image](https://travis-ci.org/thomaslauer/Block-Dude.svg?branch=master)
+
+To build this project, use one of these IDEs:
+
+1.  [Eclipse](https://eclipse.org/)
+2.  [Netbeans](https://netbeans.org/)
+3.  [IntelliJ IDEA](https://www.jetbrains.com/idea/)
