@@ -1,13 +1,21 @@
 {
 	"blocks":[
 		{
+			"id":1,
 			"colorR":255,
 			"colorG":0,
 			"colorB":255,
-			"colorA":0,
 			"texture":"bricks",
 			"name":"bricks",
-		}
+		},
+		{
+			"id":2,
+			"colorR":0,
+			"colorG":255,
+			"colorB":255,
+			"texture":"blocks",
+			"name":"blocks",
+		},
 	],
 	
 	"bitmaps":[

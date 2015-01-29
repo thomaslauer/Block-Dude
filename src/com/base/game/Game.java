@@ -19,6 +19,6 @@ public class Game extends AbstractGame{
 				.addComponent(new WorldComponent("GameFile1")));
 		
 		BitmapWorldComponent c = new BitmapWorldComponent("test", "game files/def");
-		c.loadFile();
+		c.StartMap("bitmap");
 	}
 }
