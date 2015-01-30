@@ -2,12 +2,14 @@ package com.base.game.components;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.json.simple.JSONObject;
 
 import com.base.core.Bitmap;
 import com.base.core.GameFile;
+import com.base.core.GameObject;
 import com.base.core.components.GameComponent;
-
+import com.base.core.components.TextureRenderComponent;
 import com.base.game.Block;
 
 /**
@@ -31,10 +33,14 @@ public class BitmapWorldComponent extends GameComponent
 		this.maps = new HashMap<String, Bitmap>();
 		
 		loadedBlockData = new HashMap<String, Block>();
+	}
+	
+	public void init()
+	{
 		loadBitmaps();
 	}
-
-	public void loadBitmaps()
+	
+	private void loadBitmaps()
 	{
 		maps.clear();
 		loadedBlockData.clear();
@@ -55,12 +61,14 @@ public class BitmapWorldComponent extends GameComponent
 			maps.put(s, new Bitmap(s));
 			System.out.println("loading bitmap " + s);
 		}
+		startMap("bitmap");
 	}
 	
-	public void StartMap(String name)
+	public void startMap(String name)
 	{
-		currentBitmap = maps.get(name);
 		
+		currentBitmap = maps.get(name);
+		removeAll();
 		data = new int[getWidth()][getHeight()];
 		
 		for(int y = 0; y < getHeight(); y++)
@@ -70,13 +78,27 @@ public class BitmapWorldComponent extends GameComponent
 				for(String s : loadedBlockData.keySet())
 				{
 					
-					System.out.println("Block " + loadedBlockData.get(s).name + " : data " + loadedBlockData.get(s).getRGB());
-					System.out.println("Pixel " + currentBitmap.getRGB(x, y));
+					//System.out.println("Block " + loadedBlockData.get(s).name + " : data " + loadedBlockData.get(s).getRGB());
+					//System.out.println("Pixel " + currentBitmap.getRGB(x, y));
 					if(loadedBlockData.get(s).getRGB() == currentBitmap.getRGB(x, y))
 					{
-						System.out.println("WHOOT");
+						//System.out.println("The block found for spot " + x + ", " + y + " is " + s);
+						
+						parentObject.addObject(new GameObject(x * 64, y * 64, 0, "WORLD " + x + " " + y)
+						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), 64, 64)));
 					}
 				}
+			}
+		}
+	}
+	
+	private void removeAll()
+	{
+		for(GameObject g : parentObject.children)
+		{
+			if(g.name.startsWith("WORLD"))
+			{
+				parentObject.children.remove(g);
 			}
 		}
 	}

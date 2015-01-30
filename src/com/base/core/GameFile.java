@@ -43,7 +43,7 @@ public class GameFile {
 		try 
 		{
 			// makes a File object
-			File file = new File("res/" + fileName + fileExtension);
+			File file = new File("res/game files/" + fileName + fileExtension);
 			
 			// if the file does not exist, create it
 			if(!file.exists())
@@ -71,7 +71,7 @@ public class GameFile {
 		try
 		{
 			// makes a new File object
-			File file = new File("res/" + fileName + fileExtension);
+			File file = new File("res/game files/" + fileName + fileExtension);
 			
 			// makes a buffered reader with the file
 			BufferedReader reader = new BufferedReader(new FileReader(file));
