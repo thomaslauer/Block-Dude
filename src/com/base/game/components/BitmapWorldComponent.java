@@ -27,6 +27,11 @@ public class BitmapWorldComponent extends GameComponent
 	public int[][] data;
 	public Bitmap currentBitmap = null;
 	
+	public int resolution;
+	
+	private static String startingName = "WORLD";
+	
+	
 	public BitmapWorldComponent(String name, String defFile)
 	{
 		this.file = new GameFile(defFile);
@@ -38,6 +43,9 @@ public class BitmapWorldComponent extends GameComponent
 	public void init()
 	{
 		loadBitmaps();
+		
+		// test code
+		startMap("bitmap");
 	}
 	
 	private void loadBitmaps()
@@ -61,7 +69,8 @@ public class BitmapWorldComponent extends GameComponent
 			maps.put(s, new Bitmap(s));
 			System.out.println("loading bitmap " + s);
 		}
-		startMap("bitmap");
+		
+		resolution = file.getInt("resolution");
 	}
 	
 	public void startMap(String name)
@@ -77,26 +86,23 @@ public class BitmapWorldComponent extends GameComponent
 			{
 				for(String s : loadedBlockData.keySet())
 				{
-					
-					//System.out.println("Block " + loadedBlockData.get(s).name + " : data " + loadedBlockData.get(s).getRGB());
-					//System.out.println("Pixel " + currentBitmap.getRGB(x, y));
 					if(loadedBlockData.get(s).getRGB() == currentBitmap.getRGB(x, y))
 					{
-						//System.out.println("The block found for spot " + x + ", " + y + " is " + s);
-						
-						parentObject.addObject(new GameObject(x * 64, y * 64, 0, "WORLD " + x + " " + y)
-						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), 64, 64)));
+						parentObject.addObject(new GameObject((float)(x * resolution), y * resolution, 0, startingName + " " + x + " " + y)
+						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), resolution, resolution)));
 					}
 				}
 			}
 		}
 	}
-	
+	/**
+	 * Removes all the objects 
+	 */
 	private void removeAll()
 	{
 		for(GameObject g : parentObject.children)
 		{
-			if(g.name.startsWith("WORLD"))
+			if(g.name.startsWith(startingName))
 			{
 				parentObject.children.remove(g);
 			}
