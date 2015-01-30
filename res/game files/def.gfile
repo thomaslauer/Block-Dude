@@ -1,4 +1,6 @@
 {
+	"resolution":64,
+	
 	"blocks":[
 		{
 			"id":1,
@@ -15,6 +17,14 @@
 			"colorB":255,
 			"texture":"blocks",
 			"name":"blocks",
+		},
+		{
+			"id":3,
+			"colorR":255,
+			"colorG":0,
+			"colorB":0,
+			"texture":"door",
+			"name":"door",
 		},
 	],
 	
