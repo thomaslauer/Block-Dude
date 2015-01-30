@@ -2,12 +2,14 @@ package com.base.game.components;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.json.simple.JSONObject;
 
 import com.base.core.Bitmap;
 import com.base.core.GameFile;
+import com.base.core.GameObject;
 import com.base.core.components.GameComponent;
-
+import com.base.core.components.TextureRenderComponent;
 import com.base.game.Block;
 
 /**
@@ -25,16 +27,28 @@ public class BitmapWorldComponent extends GameComponent
 	public int[][] data;
 	public Bitmap currentBitmap = null;
 	
+	public int resolution;
+	
+	private static String startingName = "WORLD";
+	
+	
 	public BitmapWorldComponent(String name, String defFile)
 	{
 		this.file = new GameFile(defFile);
 		this.maps = new HashMap<String, Bitmap>();
 		
 		loadedBlockData = new HashMap<String, Block>();
-		loadBitmaps();
 	}
-
-	public void loadBitmaps()
+	
+	public void init()
+	{
+		loadBitmaps();
+		
+		// test code
+		startMap("bitmap");
+	}
+	
+	private void loadBitmaps()
 	{
 		maps.clear();
 		loadedBlockData.clear();
@@ -55,12 +69,15 @@ public class BitmapWorldComponent extends GameComponent
 			maps.put(s, new Bitmap(s));
 			System.out.println("loading bitmap " + s);
 		}
+		
+		resolution = file.getInt("resolution");
 	}
 	
-	public void StartMap(String name)
+	public void startMap(String name)
 	{
-		currentBitmap = maps.get(name);
 		
+		currentBitmap = maps.get(name);
+		removeAll();
 		data = new int[getWidth()][getHeight()];
 		
 		for(int y = 0; y < getHeight(); y++)
@@ -69,14 +86,25 @@ public class BitmapWorldComponent extends GameComponent
 			{
 				for(String s : loadedBlockData.keySet())
 				{
-					
-					System.out.println("Block " + loadedBlockData.get(s).name + " : data " + loadedBlockData.get(s).getRGB());
-					System.out.println("Pixel " + currentBitmap.getRGB(x, y));
 					if(loadedBlockData.get(s).getRGB() == currentBitmap.getRGB(x, y))
 					{
-						System.out.println("WHOOT");
+						parentObject.addObject(new GameObject((float)(x * resolution), y * resolution, 0, startingName + " " + x + " " + y)
+						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), resolution, resolution)));
 					}
 				}
+			}
+		}
+	}
+	/**
+	 * Removes all the objects 
+	 */
+	private void removeAll()
+	{
+		for(GameObject g : parentObject.children)
+		{
+			if(g.name.startsWith(startingName))
+			{
+				parentObject.children.remove(g);
 			}
 		}
 	}
