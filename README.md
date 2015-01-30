@@ -36,3 +36,31 @@ If you don't use Eclipse, you'll have to put all the files in the `src`, `libs`,
 To set up natives, into your build settings and select the native location for lwjgl.jar. Set that to the folder `libs/natives/[YOUR OS HERE]`
 
 Replace `[YOUR OS HERE]` with either linux, macosx, solaris, or windows. I'm building this on windows, so if you automatically import the project that's what the default will be.
+
+##Coding conventions
+Use the camel style caps on almost everything, with variables and non static methods starting with a lowercase and static methods and classes starting with an uppercase letter.
+
+`exampleVariableName`
+
+`dog.bark();`
+
+`Window.Init();`
+
+Curly braces should be put on the next line:
+
+```java
+public class Dog extends Animal
+{
+  public Dog(String name)
+  {
+    super(name);
+  }
+  
+  public void bark()
+  {
+    // bark here
+  }
+}
+```
+
+It's ok for things to be left public unless changing them will cause the engine to crash, such as file paths or things like that. If they have to be private, when able make getters and setters for them. We want components to be able to change almost everything in the engine. 
