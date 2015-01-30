@@ -11,8 +11,13 @@ Link to the [Travis CI](https://travis-ci.org/thomaslauer/Block-Dude), here's th
 
 ![Image](https://travis-ci.org/thomaslauer/Block-Dude.svg?branch=master)
 
+<<<<<<< HEAD
 To build this project, use one of these IDEs:
 
 1.  [Eclipse](https://eclipse.org/)
 2.  [Netbeans](https://netbeans.org/)
 3.  [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+=======
+##Setup
+To build this project, download the files and open them in your favorite ide, I recommend [Eclipse](https://eclipse.org). Or you can build it using [ant](http://ant.apache.org/) (it won't work yet, that's coming)
+>>>>>>> master
