@@ -45,4 +45,10 @@ public class Bitmap {
 	{
 		return (data[x + y * width]) & 0x000000FF;
 	}
+	
+	public static int FromRGB(int r, int g, int b)
+	{
+		//System.out.println("r: " + r + " g: " + g +  " b: " + b);
+		return (255 << 24) + (r << 16) + (g << 8) + (b << 0);
+	}
 }
