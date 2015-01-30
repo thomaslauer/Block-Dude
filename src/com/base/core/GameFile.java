@@ -187,8 +187,21 @@ public class GameFile {
 		return (JSONObject) jsonObject.get(key);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Object> getArray(String key)
 	{
 		return (ArrayList<Object>) jsonObject.get(key);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<String> getStringArray(String key)
+	{
+		return (ArrayList<String>) jsonObject.get(key);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<JSONObject> getJsonArray(String key)
+	{
+		return (ArrayList<JSONObject>) jsonObject.get(key);
 	}
 }
