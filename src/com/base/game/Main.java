@@ -9,10 +9,11 @@ import com.base.core.Engine;
  * @author Thomas Lauer
  * 
  */
-
-public class Main {
+public class Main 
+{
 	public static void main(String args[])
 	{
+		AutoUpdate.hasUpdates();
 		Game game = new Game();
 		Engine mainEngine = new Engine(game);
 		mainEngine.start();
