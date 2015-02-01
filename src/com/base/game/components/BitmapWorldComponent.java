@@ -31,15 +31,24 @@ public class BitmapWorldComponent extends GameComponent
 	
 	private static String startingName = "WORLD";
 	
-	
+	/**
+	 * Ctor takes a name for the component and defFile
+	 * @param	name	name of the component
+	 * @param 	defFile	file that loads the game parameters
+	 */
 	public BitmapWorldComponent(String name, String defFile)
 	{
+		super(name);
 		this.file = new GameFile(defFile);
 		this.maps = new HashMap<String, Bitmap>();
 		
 		loadedBlockData = new HashMap<String, Block>();
 	}
 	
+	/**
+	 * init method from GameComponent
+	 * loads the bitmaps
+	 */
 	public void init()
 	{
 		loadBitmaps();
@@ -48,6 +57,9 @@ public class BitmapWorldComponent extends GameComponent
 		startMap("bitmap");
 	}
 	
+	/**
+	 * loads data from the def file, then loads the maps from the file names
+	 */
 	private void loadBitmaps()
 	{
 		maps.clear();
@@ -73,9 +85,13 @@ public class BitmapWorldComponent extends GameComponent
 		resolution = file.getInt("resolution");
 	}
 	
+	/**
+	 * builds the objects from a bitmap
+	 * 
+	 * @param	name	the name of the bitmap to load
+	 */
 	public void startMap(String name)
 	{
-		
 		currentBitmap = maps.get(name);
 		removeAll();
 		data = new int[getWidth()][getHeight()];
@@ -109,13 +125,29 @@ public class BitmapWorldComponent extends GameComponent
 		}
 	}
 	
+	/**
+	 * gets the width of the current bitmap
+	 * @return	width of the bitmap, or 0 if there is no current bitmap
+	 */
 	public int getWidth()
 	{
+		if(currentBitmap == null)
+		{
+			return 0;
+		}
 		return currentBitmap.getWidth();
 	}
 	
+	/**
+	 * gets the height of the current bitmap
+	 * @return	height of the bitmap, or 0 if there is no current bitmap
+	 */
 	public int getHeight()
 	{
+		if(currentBitmap == null)
+		{
+			return 0;
+		}
 		return currentBitmap.getHeight();
 	}
 }

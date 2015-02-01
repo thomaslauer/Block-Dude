@@ -11,5 +11,56 @@ Link to the [Travis CI](https://travis-ci.org/thomaslauer/Block-Dude), here's th
 
 ![Image](https://travis-ci.org/thomaslauer/Block-Dude.svg?branch=master)
 
-##Setup
-To build this project, download the files and open them in your favorite ide, I recommend [Eclipse](https://eclipse.org). Or you can build it using [ant](http://ant.apache.org/) (it won't work yet, that's coming)
+
+##Build Instructions
+To build this project, use one of these IDEs:
+
+1.  [Eclipse](https://eclipse.org/)
+2.  [Netbeans](https://netbeans.org/)
+3.  [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+
+I recommend using Eclipse, and automatically importing the project.
+
+####Jars
+
+If you don't use Eclipse, you'll have to put all the files in the `src`, `libs`, and `res` into your project folder. From the `lib/jar` folder import:
+
+- jinput.jar
+- json-simple.1.1.1.jar
+- lwjgl.jar
+- lwjgl_util.jar
+- slick-util.jar
+
+####Natives
+
+To set up natives, into your build settings and select the native location for lwjgl.jar. Set that to the folder `libs/natives/[YOUR OS HERE]`
+
+Replace `[YOUR OS HERE]` with either linux, macosx, solaris, or windows. I'm building this on windows, so if you automatically import the project that's what the default will be.
+
+##Coding conventions
+Use the camel style caps on almost everything, with variables and non static methods starting with a lowercase and static methods and classes starting with an uppercase letter.
+
+`exampleVariableName`
+
+`dog.bark();`
+
+`Window.Init();`
+
+Curly braces should be put on the next line:
+
+```java
+public class Dog extends Animal
+{
+  public Dog(String name)
+  {
+    super(name);
+  }
+  
+  public void bark()
+  {
+    // bark here
+  }
+}
+```
+
+It's ok for things to be left public unless changing them will cause the engine to crash, such as file paths or things like that. If they have to be private, when able make getters and setters for them. We want components to be able to change almost everything in the engine. 
