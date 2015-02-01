@@ -1,8 +1,11 @@
 package com.base.core;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.awt.image.*;
 
 import javax.imageio.*;
@@ -72,5 +75,23 @@ public class Resource {
 			ex.printStackTrace();
 		}
 		return img;
+	}
+	
+	public static String loadTextToString(String fileName)
+	{
+		try {
+			String tempString = "";
+			Scanner input = new Scanner(new FileInputStream(new File(fileName)));
+			while(input.hasNext())
+			{
+				tempString += input.nextLine();
+			}
+			input.close();
+			return tempString;
+		} catch (FileNotFoundException e) {
+			System.err.println("ERROR: could not load text file");
+			e.printStackTrace();
+			return "";
+		}
 	}
 }

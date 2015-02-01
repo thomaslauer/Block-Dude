@@ -1,18 +1,17 @@
 package com.base.game;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
+import com.base.core.NetworkHelper;
+import com.base.core.Resource;
 
 public class AutoUpdate {
-	public static final String url =
+	public static final String updateURL =
 			"https://raw.githubusercontent.com/thomaslauer/Block-Dude/master/VID.txt";
 	
+	
+	public static final String masterURL = 
+			"https://github.com/thomaslauer/Block-Dude/archive/master.zip";
 	/**
 	 * Checks if there is an update from the git repo. uses the version.txt file to check.
 	 * If there is one, it downloads and replaces all the files in the res folder
@@ -22,37 +21,21 @@ public class AutoUpdate {
 	{
 		try
 		{
-			URL link = new URL(url);
-			InputStream in = new BufferedInputStream(link.openStream());
-			Scanner input = new Scanner(in);
+			NetworkHelper vidDownloader = new NetworkHelper(updateURL);
+			String gitVid = vidDownloader.getString();
 			
-			String gitCurrent = "";
-			while(input.hasNext())
+			String localVid = Resource.loadTextToString("VID.txt");
+			if(gitVid.equals(localVid))
 			{
-				gitCurrent += input.nextLine();
-			}	
-		
-			FileInputStream vidIn = new FileInputStream(new File("VID.txt"));
-			Scanner vidScanner = new Scanner(vidIn);
-			
-			String localCurrent = "";
-			while(vidScanner.hasNext())
-			{
-				localCurrent += vidScanner.nextLine();
-			}	
-			
-			if(localCurrent.equals(gitCurrent))
-			{
-				System.out.println("Up to date!");
-			}	
-			input.close();
-			vidScanner.close();
-			return false;
-		} catch(Exception ex)
+				return false;
+			}
+		} catch(MalformedURLException ex)
 		{
-			System.err.println("ERROR: Could not update with GitHub");
+			System.err.println("Could not connect to GitHub, check URL");
+		} catch (IOException e) {
+			System.err.println("Could not connect to GitHub, check URL");
 		}
-		return false;
+		return true;
 	}
 	
 	
@@ -61,6 +44,12 @@ public class AutoUpdate {
 	 */
 	public static void getUpdate()
 	{
-		
+		try {
+			NetworkHelper downloader = new NetworkHelper(masterURL);
+			downloader.saveToDisk("master.zip");
+		} catch (IOException e) {
+			System.out.println("ERROR: could not download from master");
+			e.printStackTrace();
+		}
 	}
 }

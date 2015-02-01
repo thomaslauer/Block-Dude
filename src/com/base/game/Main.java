@@ -13,7 +13,12 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		AutoUpdate.hasUpdates();
+		if(AutoUpdate.hasUpdates())
+		{
+			System.out.println("Downloading updates....");
+			AutoUpdate.getUpdate();
+			System.out.println("Download complete!");
+		}
 		Game game = new Game();
 		Engine mainEngine = new Engine(game);
 		mainEngine.start();
