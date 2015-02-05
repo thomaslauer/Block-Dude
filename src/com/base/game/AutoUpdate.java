@@ -1,9 +1,11 @@
 package com.base.game;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import com.base.core.NetworkHelper;
 import com.base.core.Resource;
+import com.base.core.UnzipUtility;
 
 public class AutoUpdate {
 	public static final String updateURL =
@@ -49,6 +51,15 @@ public class AutoUpdate {
 		try {
 			NetworkHelper downloader = new NetworkHelper(masterURL);
 			downloader.saveToDisk("res.zip");
+			
+			Resource.delete(new File("res"));
+			
+			UnzipUtility uzu = new UnzipUtility();
+			uzu.unzip("res.zip", "tempRes");
+			Resource.copyFolder(new File("tempRes/Block-Dude-res-master"), new File("res"));
+			
+			Resource.delete(new File("tempRes"));
+			Resource.delete(new File("res.zip"));
 		} catch (IOException e) {
 			System.out.println("ERROR: could not download from master");
 			e.printStackTrace();
