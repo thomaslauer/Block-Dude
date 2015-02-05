@@ -19,6 +19,10 @@ public class Main
 			AutoUpdate.getUpdate();
 			System.out.println("Download complete!");
 		}
+		else
+		{
+			System.out.println("No updates found.");
+		}
 		Game game = new Game();
 		Engine mainEngine = new Engine(game);
 		mainEngine.start();
