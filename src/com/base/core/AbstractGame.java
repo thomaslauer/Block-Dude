@@ -2,7 +2,7 @@ package com.base.core;
 
 /**
  * This is the AbstractGame class, which ensures the code the designer writes fits into the code for the engine.
- * In order to use this, extend it and override the init() method to set up the game scene, all based off of the rootObject.
+ * In order to use this, extend it and override the start() method to set up the game scene, all based off of the rootObject.
  * Put all the GameObjects as children of the rootObject, and have all your components attached to their objects.
  * 
  * @author Thomas Lauer
@@ -29,11 +29,11 @@ public abstract class AbstractGame {
 	}
 	
 	// method to be used to load the game
-	public abstract void init();
+	public abstract void start();
 	
-	// calls init() on all the children
+	// calls start() on all the children
 	public void initChildren() {
-		rootObject.init();
+		rootObject.start();
 	}
 	
 	// calls input() on all children
