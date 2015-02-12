@@ -51,9 +51,14 @@ public class GameComponent {
 	{ this(""); }
 	
 	/**
-	 * method that gets called before the first frame, but after the scene is built
+	 * gets called after the component is added to the engine
 	 */
 	public void init(){}
+	
+	/**
+	 * method that gets called before the first frame, but after the scene is built
+	 */
+	public void start(){}
 	
 	/**
 	 * method to handle input

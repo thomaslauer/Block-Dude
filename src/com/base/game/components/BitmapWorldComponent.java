@@ -46,10 +46,10 @@ public class BitmapWorldComponent extends GameComponent
 	}
 	
 	/**
-	 * init method from GameComponent
+	 * start method from GameComponent
 	 * loads the bitmaps
 	 */
-	public void init()
+	public void start()
 	{
 		loadBitmaps();
 		

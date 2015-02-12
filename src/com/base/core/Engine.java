@@ -32,17 +32,17 @@ public class Engine {
 	/**
 	 * Starts the entire game
 	 */
-	public void start()
+	public void begin()
 	{
-		init();
+		start();
 		gameLoop();
 	}
 	
 	// initializes the game and other needed items
-	private void init()
+	private void start()
 	{
 		Window.createDisplay(1280, 720);
-		game.init();
+		game.start();
 		game.initChildren();
 	}
 	

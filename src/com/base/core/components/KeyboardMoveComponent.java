@@ -8,7 +8,7 @@ public class KeyboardMoveComponent extends GameComponent
 {
 	public float speed = 1.5f;
 	
-	public void init()
+	public void start()
 	{
 		Input.addKey("left", Keyboard.KEY_A);
 		Input.addKey("right", Keyboard.KEY_D);

@@ -25,6 +25,6 @@ public class Main
 		}
 		Game game = new Game();
 		Engine mainEngine = new Engine(game);
-		mainEngine.start();
+		mainEngine.begin();
 	}
 }
