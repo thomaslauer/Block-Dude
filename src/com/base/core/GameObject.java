@@ -86,21 +86,34 @@ public class GameObject {
 		return isEnabled;
 	}
 	
-	// initializes all the children and components
+	// gets called after the object is added to the engine
 	public void init()
+	{
+		for(GameComponent c : components)
+		{
+			c.init();
+		}
+		for(GameObject g : children)
+		{
+			g.init();
+		}
+	}
+	
+	// initializes all the children and components
+	public void start()
 	{
 		for(GameComponent c : components)
 		{
 			if(c.isEnabled())
 			{
-				c.init();
+				c.start();
 			}
 		}
 		for(GameObject g : children)
 		{
 			if(g.getEnabled())
 			{
-				g.init();
+				g.start();
 			}
 		}
 	}
@@ -169,6 +182,7 @@ public class GameObject {
 		o.setEngine(engine);
 		o.transform.parent = transform;
 		children.add(o);
+		o.init();
 		return this;
 	}
 	
@@ -177,6 +191,7 @@ public class GameObject {
 	{
 		c.setParentObject(this);
 		components.add(c);
+		c.init();
 		return this;
 	}
 	
