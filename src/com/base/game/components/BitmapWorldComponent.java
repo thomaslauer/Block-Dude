@@ -106,6 +106,8 @@ public class BitmapWorldComponent extends GameComponent
 					{
 						parentObject.addObject(new GameObject((float)(x * resolution), y * resolution, 0, startingName + " " + x + " " + y)
 						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), resolution, resolution)));
+						
+						data[x][y] = loadedBlockData.get(s).id;
 					}
 				}
 			}

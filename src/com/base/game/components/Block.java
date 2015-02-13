@@ -6,7 +6,7 @@ import com.base.core.Bitmap;
 
 public class Block {
 	
-	public long id;
+	public int id;
 	
 	private int r;
 	private int g;
@@ -16,7 +16,7 @@ public class Block {
 	
 	public Block(JSONObject data)
 	{
-		id = ((Number)data.get("id")).longValue();
+		id = (int) ((Number)data.get("id")).longValue();
 		
 		r = ((Number)data.get("colorR")).intValue();
 		g = ((Number)data.get("colorG")).intValue();
