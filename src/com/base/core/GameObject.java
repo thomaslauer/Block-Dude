@@ -208,6 +208,19 @@ public class GameObject {
 		return null;
 	}
 	
+	public void deleteChildObject(String name)
+	{
+		int objectIndex = -1;
+		for(GameObject g : children)
+		{
+			if(g.name == name)
+			{
+				objectIndex = children.indexOf(g);
+			}
+		}
+		if(objectIndex != -1) children.remove(objectIndex);
+	}
+	
 	// gets a component by name
 	public GameComponent getComponentByName(String name)
 	{

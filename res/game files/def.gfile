@@ -9,6 +9,7 @@
 			"colorB":255,
 			"texture":"bricks",
 			"name":"bricks",
+			"gravity":false,
 		},
 		{
 			"id":2,
@@ -17,6 +18,7 @@
 			"colorB":255,
 			"texture":"blocks",
 			"name":"blocks",
+			"gravity":true,
 		},
 		{
 			"id":3,
@@ -25,6 +27,16 @@
 			"colorB":0,
 			"texture":"door",
 			"name":"door",
+			"gravity":false,
+		},
+		{
+			"id":4,
+			"colorR":0,
+			"colorG":0,
+			"colorB":255,
+			"texture":"player",
+			"name":"player",
+			"gravity":true,
 		},
 	],
 	
