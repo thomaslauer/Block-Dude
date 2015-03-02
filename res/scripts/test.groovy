@@ -4,6 +4,6 @@ public class test extends GameComponent
 {
 	public void update()
 	{
-		println("HELLO WORLD")
+		//println("HELLO WORLD")
 	}
 }

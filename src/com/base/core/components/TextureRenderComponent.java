@@ -19,7 +19,7 @@ public class TextureRenderComponent extends GameComponent{
 		this.sy = sy;
 	}
 	
-	public void start()
+	public void init()
 	{
 		this.texture = Resource.loadTexture("textures/" + fileName);
 	}

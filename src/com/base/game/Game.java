@@ -2,8 +2,8 @@ package com.base.game;
 
 import com.base.core.AbstractGame;
 import com.base.core.GameObject;
+import com.base.core.ScriptComponent;
 import com.base.core.components.*;
-import com.base.core.script.ScriptComponent;
 import com.base.game.components.BitmapWorldComponent;
 
 /**

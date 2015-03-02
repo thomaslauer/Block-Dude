@@ -1,4 +1,4 @@
-package com.base.core.script;
+package com.base.core;
 
 import groovy.lang.GroovyClassLoader;
 
@@ -38,7 +38,7 @@ public class ScriptComponent extends GameComponent
 	
 	public void init()
 	{
-		System.out.println("Trace");
 		parentObject.addComponent(script);
+		parentObject.components.remove(this);
 	}
 }

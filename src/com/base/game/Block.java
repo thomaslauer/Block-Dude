@@ -6,7 +6,7 @@ import com.base.core.Bitmap;
 
 public class Block {
 	
-	public long id;
+	public int id;
 	
 	private int r;
 	private int g;
@@ -14,9 +14,11 @@ public class Block {
 	private String texture;
 	public String name;
 	
+	boolean gravity;
+	
 	public Block(JSONObject data)
 	{
-		id = ((Number)data.get("id")).longValue();
+		id = (int) ((Number)data.get("id")).longValue();
 		
 		r = ((Number)data.get("colorR")).intValue();
 		g = ((Number)data.get("colorG")).intValue();
@@ -25,7 +27,7 @@ public class Block {
 		texture = (String) data.get("texture");
 		name = (String) data.get("name");
 		
-		
+		gravity = (boolean) data.get("gravity");
 		//System.out.println("NEW BLOCK: r " + r + " g " + g + " b " + b);
 	}
 	
@@ -57,5 +59,9 @@ public class Block {
 	public int getRGB()
 	{
 		return Bitmap.FromRGB(r, g, b);
+	}
+
+	public boolean hasGravity() {
+		return gravity;
 	}
 }
