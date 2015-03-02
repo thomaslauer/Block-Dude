@@ -49,7 +49,7 @@ public class BitmapWorldComponent extends GameComponent
 	 * start method from GameComponent
 	 * loads the bitmaps
 	 */
-	public void start()
+	public void init()
 	{
 		loadBitmaps();
 		
@@ -92,10 +92,13 @@ public class BitmapWorldComponent extends GameComponent
 	 */
 	public void startMap(String name)
 	{
+		// loads the current bitmap
 		currentBitmap = maps.get(name);
-		removeAll();
+		
+		// creates a new array to hold the data
 		data = new int[getWidth()][getHeight()];
 		
+		// loads data from bitmap
 		for(int y = 0; y < getHeight(); y++)
 		{
 			for(int x = 0; x < getWidth(); x++)
@@ -104,25 +107,63 @@ public class BitmapWorldComponent extends GameComponent
 				{
 					if(loadedBlockData.get(s).getRGB() == currentBitmap.getRGB(x, y))
 					{
-						parentObject.addObject(new GameObject((float)(x * resolution), y * resolution, 0, startingName + " " + x + " " + y)
+						data[x][y] = loadedBlockData.get(s).id;
+					}
+				}
+			}
+		}
+		
+		// builds the scene
+		buildMap();
+	}
+	
+	public void buildMap()
+	{
+		// removes the previous scene
+		removeAll();
+		
+		for(int y = 0; y < getHeight(); y++)
+		{
+			for(int x = 0; x < getWidth(); x++)
+			{
+				for(String s : loadedBlockData.keySet())
+				{
+					//loadedBlockData.get(s).getRGB() == currentBitmap.getRGB(x, y)
+					if(loadedBlockData.get(s).id == data[x][y])
+					{
+						parentObject.getChildObject("WorldObject").addObject(new GameObject((float)(x * resolution), y * resolution, 0, startingName + " " + x + " " + y)
 						.addComponent(new TextureRenderComponent(loadedBlockData.get(s).getTexture(), resolution, resolution)));
+						
+						if(loadedBlockData.get(s).hasGravity())
+						{
+							parentObject.getChildObject("WorldObject").addComponent(new GravityComponent(x, y, loadedBlockData.get(s).id));
+						}
 					}
 				}
 			}
 		}
 	}
+	
+	public void update()
+	{
+		buildMap();
+	}
+	
 	/**
 	 * Removes all the objects 
 	 */
 	private void removeAll()
 	{
-		for(GameObject g : parentObject.children)
-		{
-			if(g.name.startsWith(startingName))
-			{
-				parentObject.children.remove(g);
-			}
-		}
+		parentObject.deleteChildObject("WorldObject");
+		parentObject.addObject(new GameObject("WorldObject"));
+		//data = new int[getWidth()][getHeight()];
+//		for(GameObject g : parentObject.children)
+//		{
+//			if(g.name.startsWith(startingName))
+//			{
+//				parentObject.children.remove(g);
+//			}
+//		}
 	}
 	
 	/**
@@ -149,5 +190,40 @@ public class BitmapWorldComponent extends GameComponent
 			return 0;
 		}
 		return currentBitmap.getHeight();
+	}
+	
+	/**
+	 * used for gravity and collision detections
+	 * @param mx starting x
+	 * @param my starting y
+	 * @param rx relative x
+	 * @param ry relative y
+	 * @return the datavalue from the data[][], or -1 if out of bounds
+	 */
+	public int getBlockRelative(int mx, int my, int rx, int ry)
+	{
+		//System.out.print("width: " + getWidth() + ", height: " + getHeight() + " " + mx + " ");
+		try
+		{
+			return data[mx + rx][my + ry];
+		}catch(ArrayIndexOutOfBoundsException ex)
+		{
+			return -1;
+		}
+	}
+	
+	/**
+	 * prints the contents of data[][]
+	 */
+	public void printArray()
+	{
+		for(int y = 0; y < getHeight(); y++)
+		{
+			for(int x = 0; x < getWidth(); x++)
+			{
+				System.out.print(data[x][y] + " ");
+			}
+			System.out.println();
+		}
 	}
 }
